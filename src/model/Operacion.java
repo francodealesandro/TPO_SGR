@@ -30,5 +30,5 @@ public abstract class Operacion {
         return estado;
     }
 
-    abstract void getFecha();
+    abstract Date getFecha();
 }
