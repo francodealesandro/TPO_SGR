@@ -7,10 +7,12 @@ import java.awt.event.ActionListener;
 public class FrmPrincipal extends JFrame {
 
     private JPanel pnlPrincipal;
-    //private JButton combosButton;
-    //private JButton listasButton;
-    //private JButton tabsButton;
-    // JButton gridsButton;
+    private JPanel pnlMenu;
+    private JButton sociosButton;
+    private JButton LineayTipoButton;
+    private JButton operacionesButton;
+    private JButton consultasButton;
+    private JPanel pnlTitulo;
 
     private FrmPrincipal self;
 
@@ -40,46 +42,20 @@ public class FrmPrincipal extends JFrame {
 
         this.self = this;
 
-        /*gridsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                FrmGridDemo frame = new FrmGridDemo(self);
-                frame.setVisible(true);
-            }
-        });*/
     }
 
     private void asociarEventos()
     {
-        /*listasButton.addActionListener(new ActionListener() {
+        sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmListaDemo frame = new FrmListaDemo(self);
+                FrmSocios frame = new FrmSocios(self, "Demo con TABS");
                 frame.setVisible(true);
             }
         });
-
-        tabsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                FrmTabsDemo frame = new FrmTabsDemo(self, "Demo con TABS");
-                frame.setVisible(true);
-            }
-        });
-        combosButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                FrmDemoCombo frame = new FrmDemoCombo(self);
-                frame.setVisible(true);
-            }
-        });*/
     }
     public static void main(String[] args) {
-        FrmPrincipal frame = new FrmPrincipal("Primer Programa SWING");
+        FrmPrincipal frame = new FrmPrincipal("Sistema SRG");
         frame.setVisible(true);
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
