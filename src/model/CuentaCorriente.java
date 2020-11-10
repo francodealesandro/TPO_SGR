@@ -1,10 +1,14 @@
 package model;
 
-public class CuentaCorriente extends Operacion {
+import java.util.Date;
 
+public class CuentaCorriente extends Operacion {
+    private String empresa;
+    private int importeTotal;
+    private Date fechaVencimiento;
 
     @Override
-    void getFecha() {
-
+    Date getFecha() {
+        return fechaVencimiento;
     }
 }
