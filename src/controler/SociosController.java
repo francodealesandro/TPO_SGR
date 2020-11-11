@@ -1,13 +1,16 @@
 package controler;
 
 import model.Socio;
+import utils.ListDAO;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class SociosController {
-    private List<Socio> listaSocios = new ArrayList<>();
+    private ListDAO<Socio> listaSocios;
+
+    public SociosController() throws Exception {
+        listaSocios = new ListDAO(Socio.class);
+    }
 
     public void getTotalDeComisiones(int socioID){
 
