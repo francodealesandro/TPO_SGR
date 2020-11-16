@@ -5,11 +5,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListDAO<T> {
+public class ListDAO<T> extends AbstractListModel<T> {
     final Class<T> clase;
     protected File archivo;
     List<T> lista = new ArrayList<T>();
@@ -17,7 +18,7 @@ public class ListDAO<T> {
     public ListDAO(Class<T> clase) throws Exception {
         this.clase = clase;
 
-        this.archivo = new File(clase.getName());
+        this.archivo = new File("datos/" + clase.getSimpleName());
         this.archivo.createNewFile();
     }
 
@@ -56,5 +57,22 @@ public class ListDAO<T> {
 
     public List<T> get() {
         return lista;
+    }
+
+    @Override
+    public int getSize() {
+        return lista.size();
+    }
+
+    @Override
+    public T getElementAt(int index) {
+        return lista.get(index);
+    }
+
+    public int add(T newModel) {
+        lista.add(newModel);
+        fireContentsChanged(this, 0, lista.size());
+
+        return lista.size()-1;
     }
 }
