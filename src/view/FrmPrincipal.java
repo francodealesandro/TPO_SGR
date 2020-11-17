@@ -49,7 +49,7 @@ public class FrmPrincipal extends JFrame {
         sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmSocios frame = new FrmSocios(self, "Demo con TABS");
+                FrmSocios frame = new FrmSocios(self, "Socios");
                 frame.setVisible(true);
             }
         });

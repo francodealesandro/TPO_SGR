@@ -1,17 +1,17 @@
 package controler;
 
 import model.Socio;
-import utils.ListDAO;
+import utils.ListaDAO;
 
 import java.util.Date;
 
 public class SociosController {
     static SociosController instance = null;
-    private ListDAO<Socio> listaSocios;
+    private ListaDAO<Socio> listaSocios;
 
     private SociosController() {
         try {
-            listaSocios = new ListDAO(Socio.class);
+            listaSocios = new ListaDAO(Socio.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,7 +23,7 @@ public class SociosController {
         return instance;
     }
 
-    public ListDAO<Socio> getSocios() {
+    public ListaDAO<Socio> getSocios() {
         return listaSocios;
     }
 

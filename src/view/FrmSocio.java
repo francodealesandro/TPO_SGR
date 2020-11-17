@@ -10,7 +10,6 @@ import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -60,9 +59,8 @@ public class FrmSocio extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Socio socio = null;
                 try {
-                    socio = new Socio(radioParticipe.isSelected(),
+                    Socio socio = new Socio(radioParticipe.isSelected(),
                             Integer.parseInt(txtCuit.getText()),
                             txtRazonSocial.getText(),
                             new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaInicio.getText()),
@@ -71,10 +69,11 @@ public class FrmSocio extends JDialog {
                             txtDireccion.getText(),
                             Integer.parseInt(txtTelefono.getText()),
                             txtCorreo.getText());
+                    controller.addSocio(socio);
+                    dispose();
                 } catch (ParseException parseException) {
                     parseException.printStackTrace();
                 }
-                controller.addSocio(socio);
             }
         });
     }

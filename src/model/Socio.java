@@ -1,12 +1,14 @@
 package model;
 
+import utils.Lista;
+
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Socio {
-    private int socioID;
     private int cuit;
-
     private String razonSocial;
     private Date fechaInicioActividades;
     private TipoEmpresa tipoEmpresa;
@@ -17,6 +19,12 @@ public class Socio {
     private boolean esParticipe;
 
     private LineaDeCredito lineaDeCredito;
+    private Lista<Accionista> accionistas = new Lista<>();
+    private Lista<Documentacion> documentaciones = new Lista<>();
+    private Lista<Aportes> aportes = new Lista<>();
+
+    public Socio() {
+    }
 
     public Socio(Boolean esParticipe,
                  int cuit,
@@ -38,9 +46,6 @@ public class Socio {
         this.correo = correo;
 
     }
-    public void subcribirAccionesSGR(List<Acciones> acciones){
-
-    }
 
     public void cambiarEstado(){
 
@@ -54,9 +59,7 @@ public class Socio {
 
     }
 
-    public int getCuit() {
-        return cuit;
-    }
+    public int getCuit() { return cuit; }
 
     public Date getFechaInicioActividades() {
         return fechaInicioActividades;
@@ -94,8 +97,31 @@ public class Socio {
         return razonSocial;
     }
 
+    public Lista<Accionista> getAccionistas() { return accionistas; }
+
+    public void setAccionistas(Lista<Accionista> accionistas) {
+        this.accionistas = accionistas;
+    }
+
+    public Lista<Documentacion> getDocumentaciones() {
+        return documentaciones;
+    }
+
+    public void setDocumentaciones(Lista<Documentacion> documentaciones) {
+        this.documentaciones = documentaciones;
+    }
+
+    public Lista<Aportes> getAportes() {
+        return aportes;
+    }
+
+    public void setAportes(Lista<Aportes> aportes) {
+        this.aportes = aportes;
+    }
+
     @Override
     public String toString() {
         return this.getNombre();
     }
+
 }

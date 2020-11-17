@@ -1,15 +1,15 @@
 package controler;
 
 import model.Operacion;
-import utils.ListDAO;
+import utils.ListaDAO;
 
 import java.util.Date;
 
 public class OperacionesController {
-    private ListDAO<Operacion> listaOperaciones;
+    private ListaDAO<Operacion> listaOperaciones;
 
     public OperacionesController() throws Exception {
-        listaOperaciones = new ListDAO(Operacion.class);
+        listaOperaciones = new ListaDAO(Operacion.class);
     }
 
     public void calcularPromedioDescuentos(int total, int iteraciones) {

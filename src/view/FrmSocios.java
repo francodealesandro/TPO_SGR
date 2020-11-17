@@ -19,9 +19,16 @@ public class FrmSocios extends JDialog {
     private JButton crearSocioButton;
     private JButton documentacionButton;
     private JButton aportesButton;
-    private JButton accionesButton;
+    private JButton accionistasButton;
     private SociosController controller;
     private JList listSocios;
+    private JTabbedPane tabbedSocio;
+    private JPanel accionistasTab;
+    private JPanel documentacionTab;
+    private JPanel AportesTab;
+    private JList listAccionistas;
+    private JList listDocumentacion;
+    private JList listAportes;
 
     private FrmSocios self;
 
@@ -55,12 +62,14 @@ public class FrmSocios extends JDialog {
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
                 selectedIndexSocio = listSocios.getSelectedIndex();
                 selectedSocio = (Socio)listSocios.getSelectedValue();
+                listAccionistas.setModel(selectedSocio.getAccionistas());
+                setSocioActions(true);
             }
         });
         crearSocioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmSocio frame = new FrmSocio(self, "Crear Socio");
+                FrmSocio frame = new FrmSocio(self, "Nuevo Socio");
                 frame.setVisible(true);
             }
         });
@@ -76,13 +85,20 @@ public class FrmSocios extends JDialog {
 
             }
         });
-        accionesButton.addActionListener(new ActionListener() {
+        accionistasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                FrmAccionista frame = new FrmAccionista(self, "Nuevo Accionista", selectedSocio);
+                frame.setVisible(true);
             }
         });
 
+    }
+
+    private void setSocioActions(boolean enabled) {
+        this.documentacionButton.setEnabled(enabled);
+        this.aportesButton.setEnabled(enabled);
+        this.accionistasButton.setEnabled(enabled);
     }
 
 }
