@@ -4,21 +4,23 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ListDAO<T> {
+public class ListaDAO<T> extends Lista<T> {
     final Class<T> clase;
     protected File archivo;
-    List<T> lista = new ArrayList<T>();
 
-    public ListDAO(Class<T> clase) throws Exception {
+    public ListaDAO(Class<T> clase) throws Exception {
+        super();
         this.clase = clase;
 
-        this.archivo = new File(clase.getName());
+        this.archivo = new File("datos/" + clase.getSimpleName());
         this.archivo.createNewFile();
+        load();
     }
 
     public void load() throws Exception {
@@ -54,7 +56,4 @@ public class ListDAO<T> {
         bwEscritor.close();
     }
 
-    public List<T> get() {
-        return lista;
-    }
 }

@@ -1,6 +1,8 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,8 +18,7 @@ public class FrmPrincipal extends JFrame {
 
     private FrmPrincipal self;
 
-    public FrmPrincipal(String titulo)
-    {
+    public FrmPrincipal(String titulo) {
         super(titulo);
 
         try {
@@ -44,18 +45,19 @@ public class FrmPrincipal extends JFrame {
 
     }
 
-    private void asociarEventos()
-    {
+    private void asociarEventos() {
         sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmSocios frame = new FrmSocios(self, "Demo con TABS");
+                FrmSocios frame = new FrmSocios(self, "Socios");
                 frame.setVisible(true);
             }
         });
     }
+
     public static void main(String[] args) {
         FrmPrincipal frame = new FrmPrincipal("Sistema SRG");
         frame.setVisible(true);
     }
+
 }

@@ -1,0 +1,1 @@
+[{"cuit":123,"razonSocial":"Test","fechaInicioActividades":"Nov 17, 2020, 12:00:00 AM","tipoEmpresa":"GRANDE","actividadPrincipal":"Test","direccion":"Test","telefono":123,"correo":"Test","esParticipe":true,"accionistas":{"lista":[],"listenerList":{}},"documentaciones":{"lista":[],"listenerList":{}},"aportes":{"lista":[],"listenerList":{}}}]
