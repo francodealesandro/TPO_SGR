@@ -1,29 +1,35 @@
 package view;
 
 import controler.SociosController;
-import model.Accionista;
+import model.Aporte;
+import model.Documentacion;
 import model.Socio;
 
 import javax.swing.*;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
-public class FrmAccionista extends JDialog {
+public class FrmAporte extends JDialog {
+    private SociosController controller;
+    private Socio socio;
+
+    private JPanel pnlPrincipal;
     private JPanel pnlTitulo;
     private JLabel lblTitulo;
-    private JPanel pnlPrincipal;
-    private JTextField txtCuit;
-    private JTextField txtRazonSocial;
+    private JPanel pnlMenu;
+    private JTextField txtMonto;
+    private JCheckBox esDeseableCheckBox;
     private JButton guardarButton;
-    private JTextField txtPorcentaje;
-    private Socio socio;
-    private SociosController controller;
+    private JFormattedTextField txtFechaRecepcion;
+    private JCheckBox esObligatoriaCheckBox;
 
-    private FrmAccionista self;
+    private FrmAporte self;
 
-    public FrmAccionista(Window owner, String titulo, Socio socio)
-    {
+    public FrmAporte(Window owner, String titulo, Socio socio) {
         super(owner, titulo);
         this.socio = socio;
         controller = SociosController.getInstance();
@@ -38,9 +44,13 @@ public class FrmAccionista extends JDialog {
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         //Formateo Date
+        DateFormatter displayFormatter = new DateFormatter(new SimpleDateFormat("dd-MM-yyyy"));
+        DefaultFormatterFactory factory = new DefaultFormatterFactory(displayFormatter, displayFormatter, displayFormatter);
+        this.txtFechaRecepcion.setFormatterFactory(factory);
         this.asociarEventos();
 
         this.self = this;
+
     }
 
     private void asociarEventos()
@@ -49,10 +59,8 @@ public class FrmAccionista extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Accionista accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
-                            txtRazonSocial.getText(),
-                            Float.parseFloat(txtPorcentaje.getText()));
-                    socio.getAccionistas().add(accionista);
+                    Aporte aporte = new Aporte(Float.parseFloat(txtFechaRecepcion.getText()));
+                    socio.getAportes().add(aporte);
                     controller.getSocios().save();
                     dispose();
                 } catch (Exception exception) {

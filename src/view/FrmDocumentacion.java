@@ -1,29 +1,34 @@
 package view;
 
 import controler.SociosController;
-import model.Accionista;
+import model.Documentacion;
 import model.Socio;
 
 import javax.swing.*;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
-public class FrmAccionista extends JDialog {
+public class FrmDocumentacion extends JDialog {
+    private JPanel pnlPrincipal;
     private JPanel pnlTitulo;
     private JLabel lblTitulo;
-    private JPanel pnlPrincipal;
-    private JTextField txtCuit;
+    private JTextField txtTipoDoc;
     private JTextField txtRazonSocial;
     private JButton guardarButton;
-    private JTextField txtPorcentaje;
-    private Socio socio;
+    private JPanel pnlMenu;
+    private JCheckBox esObligatoriaCheckBox;
+    private JCheckBox esDeseableCheckBox;
+    private JFormattedTextField txtFechaRecepcion;
     private SociosController controller;
+    private Socio socio;
 
-    private FrmAccionista self;
+    private FrmDocumentacion self;
 
-    public FrmAccionista(Window owner, String titulo, Socio socio)
-    {
+    public FrmDocumentacion(Window owner, String titulo, Socio socio) {
         super(owner, titulo);
         this.socio = socio;
         controller = SociosController.getInstance();
@@ -38,9 +43,13 @@ public class FrmAccionista extends JDialog {
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         //Formateo Date
+        DateFormatter displayFormatter = new DateFormatter(new SimpleDateFormat("dd-MM-yyyy"));
+        DefaultFormatterFactory factory = new DefaultFormatterFactory(displayFormatter, displayFormatter, displayFormatter);
+        this.txtFechaRecepcion.setFormatterFactory(factory);
         this.asociarEventos();
 
         this.self = this;
+
     }
 
     private void asociarEventos()
@@ -49,10 +58,11 @@ public class FrmAccionista extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Accionista accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
-                            txtRazonSocial.getText(),
-                            Float.parseFloat(txtPorcentaje.getText()));
-                    socio.getAccionistas().add(accionista);
+                    Documentacion documentacion = new Documentacion(txtTipoDoc.getText(),
+                            new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaRecepcion.getText()),
+                            esObligatoriaCheckBox.isSelected(),
+                            esDeseableCheckBox.isSelected());
+                    socio.getDocumentaciones().add(documentacion);
                     controller.getSocios().save();
                     dispose();
                 } catch (Exception exception) {
