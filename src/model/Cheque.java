@@ -5,9 +5,20 @@ import java.util.Date;
 public class Cheque extends Operacion {
     private int numero;
     private Date fechaVencimiento;
-    private int cuitFirmante;
+    private String cuitFirmante;
     private String banco;
-    private float valor;
+
+    public Cheque(int numeroCertificadoGarantia, int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha, int numero,
+                  Date fechaVencimiento, String cuitFirmante, String banco)
+    {
+        super(numeroCertificadoGarantia,tipoOperacion,estado,monto,certificadoEmitido,fecha);
+        this.numero = numero;
+        this.fechaVencimiento = fechaVencimiento;
+        this.cuitFirmante = cuitFirmante;
+        this.banco = banco;
+
+
+    }
 
     @Override
     Date getFecha() {
@@ -22,7 +33,4 @@ public class Cheque extends Operacion {
         return false;
     }
 
-    public float getValor() {
-        return valor;
-    }
 }

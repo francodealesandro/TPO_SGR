@@ -4,9 +4,9 @@ import java.util.Date;
 
 public abstract class Operacion {
     private int numeroCertificadoGarantia;
-    private String tipoOperacion;
+    private int tipoOperacion;
     private String estado;
-    private int monto;
+    private float monto;
     private boolean certificadoEmitido;
     protected Date fecha;
 
@@ -22,7 +22,18 @@ public abstract class Operacion {
 
     }
 
-    public String getTipoOperacion() {
+    public Operacion(int numeroCertificadoGarantia, int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha)
+    {
+        this.numeroCertificadoGarantia = numeroCertificadoGarantia;
+        this.tipoOperacion = tipoOperacion;
+        this.estado = estado;
+        this.monto = monto;
+        this.certificadoEmitido = certificadoEmitido;
+        this.fecha = fecha;
+
+    }
+
+    public int getTipoOperacion() {
         return tipoOperacion;
     }
 

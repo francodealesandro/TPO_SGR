@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Socio {
-    private int cuit;
+    private String cuit;
     private String razonSocial;
     private Date fechaInicioActividades;
     private TipoEmpresa tipoEmpresa;
@@ -27,7 +27,7 @@ public class Socio {
     }
 
     public Socio(Boolean esParticipe,
-                 int cuit,
+                 String cuit,
                  String razonSocial,
                  Date fechaInicioActividades,
                  TipoEmpresa tipoEmpresa,
@@ -59,7 +59,7 @@ public class Socio {
 
     }
 
-    public int getCuit() { return cuit; }
+    public String getCuit() { return cuit; }
 
     public Date getFechaInicioActividades() {
         return fechaInicioActividades;
