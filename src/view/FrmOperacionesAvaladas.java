@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 public class FrmOperacionesAvaladas extends JDialog {
     private JPanel pnlPrincipal;
-    private JPanel panel1;
     private JPanel pnlTitulo;
     private JTextField textField1;
     private JComboBox comboBox1;

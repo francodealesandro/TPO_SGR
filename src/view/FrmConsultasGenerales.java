@@ -58,8 +58,8 @@ public class FrmConsultasGenerales extends JDialog{
         valorPromedioDeLaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              //  FrmPromedioTasaDescuento frame = new FrmPromedioTasaDescuento(self, "Promedio tasa de descuento");
-             //   frame.setVisible(true);
+                FrmPromedioTasaDescuento frame = new FrmPromedioTasaDescuento(self, "Promedio tasa de descuento");
+                frame.setVisible(true);
 
             }
         });
