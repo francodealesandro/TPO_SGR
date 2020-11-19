@@ -42,7 +42,7 @@ public class FrmConsultasGenerales extends JDialog{
         totalDeComisionesCalculadasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmConsultaPorcentajeOperacion frame = new FrmConsultaPorcentajeOperacion(self, "Consulta porcentaje por operacion");
+                FrmTotalComisiones frame = new FrmTotalComisiones(self, "Total de comisiones calculadas en un dia por operaciones de cheques");
                 frame.setVisible(true);
 
             }
