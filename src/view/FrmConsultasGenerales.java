@@ -66,16 +66,16 @@ public class FrmConsultasGenerales extends JDialog{
         porcentajeDeComisionPorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              //  FrmTotalComisiones frame = new FrmTotalComisiones(self, "Total de comisiones calculadas en un dia");
-              //  frame.setVisible(true);
+                FrmConsultaPorcentajeOperacion frame = new FrmConsultaPorcentajeOperacion(self, "Total de comisiones calculadas en un dia");
+                frame.setVisible(true);
 
             }
         });
         consultaRiesgoVivoYButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // FrmConsultaRiesgoVivoYTotalUtilizado frame = new FrmConsultaRiesgoVivoYTotalUtilizado(self, "Consulta riesgo vivo y total utilizado");
-             //   frame.setVisible(true);
+                FrmConsultaRiesgoVivoYTotalUtilizado frame = new FrmConsultaRiesgoVivoYTotalUtilizado(self, "Consulta riesgo vivo y total utilizado");
+                frame.setVisible(true);
 
             }
         });
