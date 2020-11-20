@@ -10,6 +10,8 @@ public abstract class Operacion {
     private boolean certificadoEmitido;
     protected Date fecha;
 
+    static int idBase = 0;
+
     public void calcularComiciones(){
 
     }
@@ -22,15 +24,15 @@ public abstract class Operacion {
 
     }
 
-    public Operacion(int numeroCertificadoGarantia, int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha)
+    public Operacion(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha)
     {
-        this.numeroCertificadoGarantia = numeroCertificadoGarantia;
+        this.numeroCertificadoGarantia = idBase;
+        idBase ++;
         this.tipoOperacion = tipoOperacion;
         this.estado = estado;
         this.monto = monto;
         this.certificadoEmitido = certificadoEmitido;
         this.fecha = fecha;
-
     }
 
     public int getTipoOperacion() {
@@ -42,4 +44,8 @@ public abstract class Operacion {
     }
 
     abstract Date getFecha();
+
+    public int getNumeroCertificadoGarantia(){ return numeroCertificadoGarantia;}
+
+
 }

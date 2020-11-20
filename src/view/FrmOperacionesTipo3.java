@@ -1,6 +1,7 @@
 package view;
 
 import controler.OperacionesController;
+import controler.SociosController;
 import model.CuentaCorriente;
 import model.Prestamo;
 
@@ -22,8 +23,10 @@ public class FrmOperacionesTipo3 extends JDialog{
     private JComboBox comboSistema;
     private JButton aceptarButton;
     private JPanel pnlPrincipal;
+    private JComboBox comboSocios;
 
     private OperacionesController controller;
+    private SociosController controllerS;
 
     private FrmOperacionesTipo3 self;
 
@@ -31,6 +34,7 @@ public class FrmOperacionesTipo3 extends JDialog{
     {
         super(owner, titulo);
         controller = OperacionesController.getInstance();
+        controllerS = SociosController.getInstance();
 
 
 
@@ -44,6 +48,9 @@ public class FrmOperacionesTipo3 extends JDialog{
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         this.self = this;
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addAll(controllerS.getSocios().get());
+        comboSocios.setModel(model);
 
         this.asociarEventos();
 
@@ -75,10 +82,9 @@ public class FrmOperacionesTipo3 extends JDialog{
 
                 Prestamo p = new Prestamo(
                         3,
-                        3,
-                        "Con certificado emitido",
+                        "Ingresado",
                         Float.parseFloat(txtImporte.getText()),
-                        true,
+                        false,
                         fechaActual,
                         txtBanco.getText(),
                         Float.parseFloat(txtTasa.getText()),

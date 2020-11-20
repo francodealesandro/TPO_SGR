@@ -17,8 +17,8 @@ public class Socio {
     private int telefono;
     private String correo;
     private boolean esParticipe;
-
     private LineaDeCredito lineaDeCredito;
+
     private Lista<Accionista> accionistas = new Lista<>();
     private Lista<Documentacion> documentaciones = new Lista<>();
     private Lista<Aportes> aportes = new Lista<>();

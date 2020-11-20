@@ -1,6 +1,7 @@
 package view;
 
 import controler.OperacionesController;
+import controler.SociosController;
 import model.Cheque;
 import model.CuentaCorriente;
 
@@ -20,8 +21,10 @@ public class FrmOperacionesTipo2 extends JDialog{
     private JButton aceptarButton;
     private JPanel pnlPrincipal;
     private JPanel panel;
+    private JComboBox comboSocios;
 
     private OperacionesController controller;
+    private SociosController controllerS;
 
 
     private FrmOperacionesTipo2 self;
@@ -30,6 +33,8 @@ public class FrmOperacionesTipo2 extends JDialog{
     {
         super(owner, titulo);
         controller = OperacionesController.getInstance();
+        controllerS = SociosController.getInstance();
+
 
 
         this.setContentPane(pnlPrincipal);
@@ -42,6 +47,10 @@ public class FrmOperacionesTipo2 extends JDialog{
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         this.self = this;
+
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addAll(controllerS.getSocios().get());
+        comboSocios.setModel(model);
 
         this.asociarEventos();
 
@@ -72,10 +81,9 @@ public class FrmOperacionesTipo2 extends JDialog{
 
                 CuentaCorriente cc = new CuentaCorriente(
                         2,
-                        2,
-                        "Con certificado emitido",
+                        "Ingresado",
                         Float.parseFloat(txtImporte.getText()),
-                        true,
+                        false,
                         fechaActual,
                         txtEmpresa.getText(),
                         getDate(a,m,d));

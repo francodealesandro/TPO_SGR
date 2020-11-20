@@ -41,16 +41,43 @@ public class OperacionesController {
 
         listaOperaciones.add(c);
 
+        try {
+            listaOperaciones.save();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+
     }
 
     public void addCuentaCorriente(CuentaCorriente cuenta)
     {
         listaOperaciones.add(cuenta);
+
+        try {
+            listaOperaciones.save();
+            }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+
     }
 
     public void addPrestamo(Prestamo p)
     {
         listaOperaciones.add(p);
+
+        try {
+            listaOperaciones.save();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+
     }
 
 

@@ -1,6 +1,7 @@
 package view;
 
 import controler.OperacionesController;
+import controler.SociosController;
 import model.Cheque;
 import model.Operacion;
 import model.Socio;
@@ -28,7 +29,9 @@ public class FrmOperacionesTipo1 extends JDialog {
     private JButton aceptarButton;
     private JPanel pnlPrincipal;
     private JTextField txtMonto;
+    private JComboBox comboSocios;
     private OperacionesController controller;
+    private SociosController controllerS;
 
     private FrmOperacionesTipo1 self;
 
@@ -36,6 +39,7 @@ public class FrmOperacionesTipo1 extends JDialog {
     {
         super(owner, titulo);
         controller = OperacionesController.getInstance();
+        controllerS = SociosController.getInstance();
         this.setContentPane(pnlPrincipal);
         this.setSize(600, 600);
 
@@ -46,6 +50,9 @@ public class FrmOperacionesTipo1 extends JDialog {
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         this.self = this;
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addAll(controllerS.getSocios().get());
+        comboSocios.setModel(model);
 
 
         this.asociarEventos();
@@ -77,10 +84,9 @@ public class FrmOperacionesTipo1 extends JDialog {
                         Cheque op = new Cheque(
                             //TODO el numero de certificado de garantia se crea sin repetir
                             1,
-                            1,
-                            "Con certificado emitido",
+                            "Ingresado",
                             Float.parseFloat(txtMonto.getText()),
-                            true,
+                            false,
                             fechaActual,
                             Integer.parseInt(txtNroCheque.getText()),
                             getDate(a,m,d),

@@ -8,10 +8,11 @@ public class Cheque extends Operacion {
     private String cuitFirmante;
     private String banco;
 
-    public Cheque(int numeroCertificadoGarantia, int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha, int numero,
+    public Cheque(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha, int numero,
                   Date fechaVencimiento, String cuitFirmante, String banco)
     {
-        super(numeroCertificadoGarantia,tipoOperacion,estado,monto,certificadoEmitido,fecha);
+        super(tipoOperacion,estado,monto,certificadoEmitido,fecha);
+
         this.numero = numero;
         this.fechaVencimiento = fechaVencimiento;
         this.cuitFirmante = cuitFirmante;
