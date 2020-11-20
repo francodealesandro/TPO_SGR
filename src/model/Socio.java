@@ -116,6 +116,14 @@ public class Socio {
         this.aportes = aportes;
     }
 
+    public LineaDeCredito getLineaDeCredito() {
+        return lineaDeCredito;
+    }
+
+    public void setLineaDeCredito(LineaDeCredito lineaDeCredito) {
+        this.lineaDeCredito = lineaDeCredito;
+    }
+
     @Override
     public String toString() {
         return this.getNombre();

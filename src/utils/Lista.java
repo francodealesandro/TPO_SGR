@@ -3,6 +3,9 @@ package utils;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Lista<T> extends AbstractListModel {
     protected List<T> lista = new ArrayList<T>();
@@ -30,4 +33,5 @@ public class Lista<T> extends AbstractListModel {
 
         return lista.size()-1;
     }
+
 }
