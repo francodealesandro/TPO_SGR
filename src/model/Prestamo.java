@@ -9,10 +9,10 @@ public class Prestamo extends Operacion {
     private int cantidadCuotas;
     private String sistema;
 
-    public Prestamo(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha,String banco,
+    public Prestamo(LineaDeCredito linea,  int tipoOperacion, float monto,Date fecha,String banco,
             float tasa, Date fechaAcreditacion, int cantidadCuotas, String sistema)
     {
-        super(tipoOperacion,estado,monto,certificadoEmitido,fecha);
+        super(linea, tipoOperacion,monto,fecha);
         this.banco = banco;
         this.tasa = tasa;
         this.fechaAcreditacion = fechaAcreditacion;

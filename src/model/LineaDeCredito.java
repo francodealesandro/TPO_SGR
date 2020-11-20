@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LineaDeCredito {
     private Date fechaVigencia;
-    private int monto;
+    private float monto;
     private int numeroSocio;
     private String tipoOperacionCredito;
 
@@ -20,16 +20,21 @@ public class LineaDeCredito {
 
     }
 
-    public int calcularRestante() {
-        return 0;
+    public float calcularRestante() {
+        float respuesta = listaOperaciones.stream().map(x -> x.getMonto()).reduce(monto,(x,y) -> x - y );
+        return respuesta;
     }
 
-    public int calcularUtilizado() {
+    public float calcularUtilizado() {
         return monto - this.calcularRestante();
     }
 
     public List<Operacion> getOperaciones(){
         return listaOperaciones;
+    }
+
+    public void addOperacion(Operacion o){
+        this.listaOperaciones.add(o);
     }
 }
 

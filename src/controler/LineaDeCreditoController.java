@@ -2,6 +2,7 @@
 package controler;
 
 import model.LineaDeCredito;
+import model.Operacion;
 import model.Socio;
 import utils.Lista;
 
@@ -41,5 +42,7 @@ public class LineaDeCreditoController {
             e.printStackTrace();
         }
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package model;
 
+import javax.sound.sampled.Line;
 import java.util.Date;
 
 public class Cheque extends Operacion {
@@ -8,10 +9,10 @@ public class Cheque extends Operacion {
     private String cuitFirmante;
     private String banco;
 
-    public Cheque(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha, int numero,
+    public Cheque(LineaDeCredito linea,int tipoOperacion, float monto, Date fecha, int numero,
                   Date fechaVencimiento, String cuitFirmante, String banco)
     {
-        super(tipoOperacion,estado,monto,certificadoEmitido,fecha);
+        super(linea, tipoOperacion,monto,fecha);
 
         this.numero = numero;
         this.fechaVencimiento = fechaVencimiento;

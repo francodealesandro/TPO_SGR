@@ -10,8 +10,9 @@ class CuentaCorrienteTest {
     @Test
     void NuevaCuentaCorrienteTest()
     {
-        CuentaCorriente cc1 = new CuentaCorriente(1,"Ingresado",1234, false, new Date(),"Empresita",new Date());
-        CuentaCorriente cc2 = new CuentaCorriente(1,"Ingresado",1234, false, new Date(),"Empresita",new Date());
+        LineaDeCredito l = new LineaDeCredito();
+        CuentaCorriente cc1 = new CuentaCorriente(l,1,1234, new Date(),"Empresita",new Date());
+        CuentaCorriente cc2 = new CuentaCorriente(l,1,1234,  new Date(),"Empresita",new Date());
 
         int id1 = cc1.getNumeroCertificadoGarantia();
         int id2 = cc2.getNumeroCertificadoGarantia();

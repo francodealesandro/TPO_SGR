@@ -3,7 +3,9 @@ package view;
 import controler.OperacionesController;
 import controler.SociosController;
 import model.CuentaCorriente;
+import model.LineaDeCredito;
 import model.Prestamo;
+import model.Socio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,13 +80,14 @@ public class FrmOperacionesTipo3 extends JDialog{
                 int m = Integer.parseInt(FechaAcreditacionM.getSelectedItem().toString());
                 int d = Integer.parseInt(FechaAcreditacionD.getSelectedItem().toString());
                 Date fechaActual = new Date();
+                Socio s = (Socio)comboSocios.getSelectedItem();
+                LineaDeCredito linea = s.getLineaDeCredito();
 
 
                 Prestamo p = new Prestamo(
+                        linea,
                         3,
-                        "Ingresado",
                         Float.parseFloat(txtImporte.getText()),
-                        false,
                         fechaActual,
                         txtBanco.getText(),
                         Float.parseFloat(txtTasa.getText()),

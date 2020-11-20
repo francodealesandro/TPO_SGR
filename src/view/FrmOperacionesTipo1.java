@@ -2,10 +2,7 @@ package view;
 
 import controler.OperacionesController;
 import controler.SociosController;
-import model.Cheque;
-import model.Operacion;
-import model.Socio;
-import model.TipoEmpresa;
+import model.*;
 
 import javax.swing.*;
 import javax.swing.text.DateFormatter;
@@ -79,14 +76,16 @@ public class FrmOperacionesTipo1 extends JDialog {
                     int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
                     int d = Integer.parseInt(fechaVencimientoD.getSelectedItem().toString());
                     Date fechaActual = new Date();
+                    Socio s = (Socio)comboSocios.getSelectedItem();
+                    LineaDeCredito linea = s.getLineaDeCredito();
+                    float resto = linea.calcularRestante();
 
 
                         Cheque op = new Cheque(
                             //TODO el numero de certificado de garantia se crea sin repetir
+                                linea,
                             1,
-                            "Ingresado",
                             Float.parseFloat(txtMonto.getText()),
-                            false,
                             fechaActual,
                             Integer.parseInt(txtNroCheque.getText()),
                             getDate(a,m,d),

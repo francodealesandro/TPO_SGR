@@ -24,15 +24,25 @@ public abstract class Operacion {
 
     }
 
-    public Operacion(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha)
+    public Operacion(LineaDeCredito linea, int tipoOperacion, float monto, Date fecha)
     {
         this.numeroCertificadoGarantia = idBase;
         idBase ++;
         this.tipoOperacion = tipoOperacion;
-        this.estado = estado;
         this.monto = monto;
-        this.certificadoEmitido = certificadoEmitido;
         this.fecha = fecha;
+        linea.addOperacion(this);
+        if(linea.calcularRestante() >= monto){
+            this.estado = "Con certificado emitido";
+            this.certificadoEmitido = true;
+        }else {
+            this.estado = "Ingresado";
+            this.certificadoEmitido = false;
+        }
+
+
+
+
     }
 
     public int getTipoOperacion() {
@@ -46,6 +56,10 @@ public abstract class Operacion {
     abstract Date getFecha();
 
     public int getNumeroCertificadoGarantia(){ return numeroCertificadoGarantia;}
+
+    public float getMonto(){
+        return monto;
+    }
 
 
 }

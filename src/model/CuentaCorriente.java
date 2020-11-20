@@ -1,15 +1,16 @@
 package model;
 
+import javax.sound.sampled.Line;
 import java.util.Date;
 
 public class CuentaCorriente extends Operacion {
     private String empresa;
     private Date fechaVencimiento;
 
-    public CuentaCorriente(int tipoOperacion, String estado, float monto, boolean certificadoEmitido, Date fecha, String empresa,
+    public CuentaCorriente(LineaDeCredito linea,int tipoOperacion, float monto, Date fecha, String empresa,
                            Date fechaVencimiento)
     {
-        super(tipoOperacion,estado,monto,certificadoEmitido,fecha);
+        super(linea, tipoOperacion,monto,fecha);
         this.empresa = empresa;
         this.fechaVencimiento = fechaVencimiento;
 

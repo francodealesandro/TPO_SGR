@@ -4,6 +4,8 @@ import controler.OperacionesController;
 import controler.SociosController;
 import model.Cheque;
 import model.CuentaCorriente;
+import model.LineaDeCredito;
+import model.Socio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,13 +79,13 @@ public class FrmOperacionesTipo2 extends JDialog{
                 int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
                 int d = Integer.parseInt(fechaVencimientoD.getSelectedItem().toString());
                 Date fechaActual = new Date();
-
+                Socio s = (Socio)comboSocios.getSelectedItem();
+                LineaDeCredito linea = s.getLineaDeCredito();
 
                 CuentaCorriente cc = new CuentaCorriente(
+                        linea,
                         2,
-                        "Ingresado",
                         Float.parseFloat(txtImporte.getText()),
-                        false,
                         fechaActual,
                         txtEmpresa.getText(),
                         getDate(a,m,d));

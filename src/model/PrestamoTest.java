@@ -10,8 +10,10 @@ class PrestamoTest {
     @Test
     void NuevoPrestamoTest()
     {
-        Prestamo p1 = new Prestamo(1,"Ingresado",1234, false, new Date(),"Empresita",23,new Date(),12,"Aleman");
-        Prestamo p2 = new Prestamo(1,"Ingresado",1234, false, new Date(),"Empresita",23,new Date(),12,"Aleman");
+        LineaDeCredito l = new LineaDeCredito();
+
+        Prestamo p1 = new Prestamo(l,1,1234, new Date(),"Empresita",23,new Date(),12,"Aleman");
+        Prestamo p2 = new Prestamo(l,1,1234, new Date(),"Empresita",23,new Date(),12,"Aleman");
 
         int id1 = p1.getNumeroCertificadoGarantia();
         int id2 = p2.getNumeroCertificadoGarantia();
