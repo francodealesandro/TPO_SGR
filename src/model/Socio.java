@@ -14,14 +14,12 @@ public class Socio {
     private int telefono;
     private String correo;
     private boolean esParticipe;
+    private EstadoSocio estado = EstadoSocio.POSTULANTE_A_SOCIO;
 
     private LineaDeCredito lineaDeCredito;
     private Lista<Accionista> accionistas = new Lista<>();
     private Lista<Documentacion> documentaciones = new Lista<>();
     private Lista<Aporte> aportes = new Lista<>();
-
-    public Socio() {
-    }
 
     public Socio(Boolean esParticipe,
                  int cuit,
@@ -126,7 +124,23 @@ public class Socio {
 
     @Override
     public String toString() {
-        return this.getNombre();
+        return this.getNombre() + (estado == EstadoSocio.POSTULANTE_A_SOCIO ? " (Postulante a socio)" : " (Socio pleno)");
     }
 
+    public EstadoSocio getEstado() {
+        return estado;
+    }
+
+    public void Aceptar() throws ExceptionDocumentacionNoAprobada {
+        boolean documentacionesAprobadas = this.documentaciones.get().stream()
+                .filter(x -> x.getEstado() != EstadoDocumentacion.RECHAZADO)
+                .allMatch(x -> x.getEstado() == EstadoDocumentacion.CONTROLADO);
+        if (documentacionesAprobadas)
+            this.estado = EstadoSocio.SOCIO_PLENO;
+        else
+            throw new ExceptionDocumentacionNoAprobada(this.documentaciones.get().stream()
+                    .filter(x -> x.getEstado() == EstadoDocumentacion.INGRESADO)
+                    .map(x -> x.toString())
+                    .reduce("", (x,y) -> x + y + "\n"));
+    }
 }

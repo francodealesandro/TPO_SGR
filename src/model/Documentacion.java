@@ -7,6 +7,12 @@ public class Documentacion {
     private Date fechaRecepcion;
     private EstadoDocumentacion estado;
     private boolean esObligatoria;
+
+    @Override
+    public String toString() {
+        return tipoDoc;
+    }
+
     private boolean esDeseable;
 
     public Documentacion(String tipoDoc, Date fechaRecepcion, boolean esObligatoria, boolean esDeseable) {
@@ -21,4 +27,10 @@ public class Documentacion {
     {
         this.estado = estado;
     }
+
+
+    public EstadoDocumentacion getEstado() {
+        return estado;
+    }
+
 }

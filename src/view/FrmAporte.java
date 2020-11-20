@@ -22,10 +22,7 @@ public class FrmAporte extends JDialog {
     private JLabel lblTitulo;
     private JPanel pnlMenu;
     private JTextField txtMonto;
-    private JCheckBox esDeseableCheckBox;
     private JButton guardarButton;
-    private JFormattedTextField txtFechaRecepcion;
-    private JCheckBox esObligatoriaCheckBox;
 
     private FrmAporte self;
 
@@ -43,10 +40,6 @@ public class FrmAporte extends JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
-        //Formateo Date
-        DateFormatter displayFormatter = new DateFormatter(new SimpleDateFormat("dd-MM-yyyy"));
-        DefaultFormatterFactory factory = new DefaultFormatterFactory(displayFormatter, displayFormatter, displayFormatter);
-        this.txtFechaRecepcion.setFormatterFactory(factory);
         this.asociarEventos();
 
         this.self = this;
@@ -59,7 +52,7 @@ public class FrmAporte extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Aporte aporte = new Aporte(Float.parseFloat(txtFechaRecepcion.getText()));
+                    Aporte aporte = new Aporte(Float.parseFloat(txtMonto.getText()));
                     socio.getAportes().add(aporte);
                     controller.getSocios().save();
                     dispose();
