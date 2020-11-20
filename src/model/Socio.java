@@ -5,7 +5,7 @@ import utils.Lista;
 import java.util.Date;
 
 public class Socio {
-    private int cuit;
+    private String cuit;
     private String razonSocial;
     private Date fechaInicioActividades;
     private TipoEmpresa tipoEmpresa;
@@ -17,12 +17,13 @@ public class Socio {
     private EstadoSocio estado = EstadoSocio.POSTULANTE_A_SOCIO;
 
     private LineaDeCredito lineaDeCredito;
+
     private Lista<Accionista> accionistas = new Lista<>();
     private Lista<Documentacion> documentaciones = new Lista<>();
     private Lista<Aporte> aportes = new Lista<>();
 
     public Socio(Boolean esParticipe,
-                 int cuit,
+                 String cuit,
                  String razonSocial,
                  Date fechaInicioActividades,
                  TipoEmpresa tipoEmpresa,
@@ -54,7 +55,7 @@ public class Socio {
 
     }
 
-    public int getCuit() { return cuit; }
+    public String getCuit() { return cuit; }
 
     public Date getFechaInicioActividades() {
         return fechaInicioActividades;

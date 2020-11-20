@@ -53,6 +53,15 @@ public class FrmPrincipal extends JFrame {
                 FrmSocios frame = new FrmSocios(self, "Socios");
                 frame.setVisible(true);
             }
+
+        });
+        operacionesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                FrmMenuOperaciones frame = new FrmMenuOperaciones(self, "Socios");
+                frame.setVisible(true);
+            }
+
         });
         consultasButton.addActionListener(new ActionListener() {
             @Override

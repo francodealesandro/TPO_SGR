@@ -61,7 +61,7 @@ public class FrmSocio extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Socio socio = new Socio(radioParticipe.isSelected(),
-                            Integer.parseInt(txtCuit.getText()),
+                            txtCuit.getText(),
                             txtRazonSocial.getText(),
                             new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaInicio.getText()),
                             comboTipo.getSelectedItem().equals("Pequeño") ? TipoEmpresa.PEQUEÑA : comboTipo.getSelectedItem().equals("Mediana") ? TipoEmpresa.MEDIANA : TipoEmpresa.GRANDE,
