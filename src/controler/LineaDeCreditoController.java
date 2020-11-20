@@ -14,7 +14,9 @@ public class LineaDeCreditoController {
         this.sociosController = SociosController.getInstance();
         try {
             for (Socio socio: sociosController.getSocios().get()) {
-                listaLineasDeCreditos.add(socio.getLineaDeCredito());
+                LineaDeCredito linea = socio.getLineaDeCredito();
+                if (linea !=  null)
+                    listaLineasDeCreditos.add(linea);
             }
         } catch (Exception e) {
             e.printStackTrace();
