@@ -77,7 +77,7 @@ public class FrmSocios extends JDialog {
         btnAceptarDoc.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedDocumentacion.cambiarEstado(EstadoDocumentacion.INGRESADO);
+                selectedDocumentacion.cambiarEstado(EstadoDocumentacion.CONTROLADO);
                 btnAceptarDoc.setEnabled(false);
                 btnRechazarDoc.setEnabled(false);
             }
