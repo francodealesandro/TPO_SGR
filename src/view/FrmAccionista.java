@@ -1,5 +1,6 @@
 package view;
 
+import controler.SociosController;
 import model.Accionista;
 import model.Socio;
 
@@ -17,6 +18,7 @@ public class FrmAccionista extends JDialog {
     private JButton guardarButton;
     private JTextField txtPorcentaje;
     private Socio socio;
+    private SociosController controller;
 
     private FrmAccionista self;
 
@@ -24,6 +26,7 @@ public class FrmAccionista extends JDialog {
     {
         super(owner, titulo);
         this.socio = socio;
+        controller = SociosController.getInstance();
 
         this.setContentPane(pnlPrincipal);
         this.setSize(400, 400);
@@ -45,11 +48,16 @@ public class FrmAccionista extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Accionista accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
-                        txtRazonSocial.getText(),
-                        Float.parseFloat(txtPorcentaje.getText()));
-                socio.getAccionistas().add(accionista);
-                dispose();
+                try {
+                    Accionista accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
+                            txtRazonSocial.getText(),
+                            Float.parseFloat(txtPorcentaje.getText()));
+                    socio.getAccionistas().add(accionista);
+                    controller.getSocios().save();
+                    dispose();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
     }

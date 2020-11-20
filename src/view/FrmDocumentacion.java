@@ -1,7 +1,6 @@
 package view;
 
 import controler.SociosController;
-import model.Aporte;
 import model.Documentacion;
 import model.Socio;
 
@@ -13,23 +12,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
-public class FrmAporte extends JDialog {
-    private SociosController controller;
-    private Socio socio;
-
+public class FrmDocumentacion extends JDialog {
     private JPanel pnlPrincipal;
     private JPanel pnlTitulo;
     private JLabel lblTitulo;
-    private JPanel pnlMenu;
-    private JTextField txtMonto;
-    private JCheckBox esDeseableCheckBox;
+    private JTextField txtTipoDoc;
+    private JTextField txtRazonSocial;
     private JButton guardarButton;
-    private JFormattedTextField txtFechaRecepcion;
+    private JPanel pnlMenu;
     private JCheckBox esObligatoriaCheckBox;
+    private JCheckBox esDeseableCheckBox;
+    private JFormattedTextField txtFechaRecepcion;
+    private SociosController controller;
+    private Socio socio;
 
-    private FrmAporte self;
+    private FrmDocumentacion self;
 
-    public FrmAporte(Window owner, String titulo, Socio socio) {
+    public FrmDocumentacion(Window owner, String titulo, Socio socio) {
         super(owner, titulo);
         this.socio = socio;
         controller = SociosController.getInstance();
@@ -59,8 +58,11 @@ public class FrmAporte extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Aporte aporte = new Aporte(Float.parseFloat(txtFechaRecepcion.getText()));
-                    socio.getAportes().add(aporte);
+                    Documentacion documentacion = new Documentacion(txtTipoDoc.getText(),
+                            new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaRecepcion.getText()),
+                            esObligatoriaCheckBox.isSelected(),
+                            esDeseableCheckBox.isSelected());
+                    socio.getDocumentaciones().add(documentacion);
                     controller.getSocios().save();
                     dispose();
                 } catch (Exception exception) {

@@ -63,6 +63,9 @@ public class FrmSocios extends JDialog {
                 selectedIndexSocio = listSocios.getSelectedIndex();
                 selectedSocio = (Socio)listSocios.getSelectedValue();
                 listAccionistas.setModel(selectedSocio.getAccionistas());
+                listDocumentacion.setModel(selectedSocio.getDocumentaciones());
+                AportesTab.setVisible(selectedSocio.esProtector());
+                listAportes.setModel(selectedSocio.getAportes());
                 setSocioActions(true);
             }
         });
@@ -76,7 +79,8 @@ public class FrmSocios extends JDialog {
         documentacionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                FrmDocumentacion frame = new FrmDocumentacion(self, "Nueva Documentacion", selectedSocio);
+                frame.setVisible(true);
             }
         });
         aportesButton.addActionListener(new ActionListener() {

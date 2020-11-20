@@ -43,6 +43,7 @@ public class FrmPrincipal extends JFrame {
 
         this.self = this;
 
+
     }
 
     private void asociarEventos() {
@@ -62,11 +63,19 @@ public class FrmPrincipal extends JFrame {
             }
 
         });
+        consultasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmConsultasGenerales frame = new FrmConsultasGenerales(self, "Socios");
+                frame.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
         FrmPrincipal frame = new FrmPrincipal("Sistema SRG");
         frame.setVisible(true);
     }
+
 
 }

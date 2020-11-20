@@ -2,10 +2,7 @@ package model;
 
 import utils.Lista;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Socio {
     private String cuit;
@@ -21,7 +18,7 @@ public class Socio {
 
     private Lista<Accionista> accionistas = new Lista<>();
     private Lista<Documentacion> documentaciones = new Lista<>();
-    private Lista<Aportes> aportes = new Lista<>();
+    private Lista<Aporte> aportes = new Lista<>();
 
     public Socio() {
     }
@@ -111,12 +108,20 @@ public class Socio {
         this.documentaciones = documentaciones;
     }
 
-    public Lista<Aportes> getAportes() {
+    public Lista<Aporte> getAportes() {
         return aportes;
     }
 
-    public void setAportes(Lista<Aportes> aportes) {
+    public void setAportes(Lista<Aporte> aportes) {
         this.aportes = aportes;
+    }
+
+    public LineaDeCredito getLineaDeCredito() {
+        return lineaDeCredito;
+    }
+
+    public void setLineaDeCredito(LineaDeCredito lineaDeCredito) {
+        this.lineaDeCredito = lineaDeCredito;
     }
 
     @Override

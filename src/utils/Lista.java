@@ -30,4 +30,5 @@ public class Lista<T> extends AbstractListModel {
 
         return lista.size()-1;
     }
+
 }
