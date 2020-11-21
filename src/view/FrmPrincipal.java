@@ -70,6 +70,13 @@ public class FrmPrincipal extends JFrame {
                 frame.setVisible(true);
             }
         });
+        LineayTipoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmLineasDeCredito frame = new FrmLineasDeCredito(self, "Socios");
+                frame.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
