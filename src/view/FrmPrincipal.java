@@ -42,8 +42,6 @@ public class FrmPrincipal extends JFrame {
         this.asociarEventos();
 
         this.self = this;
-
-
     }
 
     private void asociarEventos() {
@@ -67,6 +65,13 @@ public class FrmPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FrmConsultasGenerales frame = new FrmConsultasGenerales(self, "Socios");
+                frame.setVisible(true);
+            }
+        });
+        LineayTipoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmLineaCredito frame = new FrmLineaCredito(self, "Socios");
                 frame.setVisible(true);
             }
         });
