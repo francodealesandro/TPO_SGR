@@ -108,7 +108,8 @@ public class FrmSocios extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     selectedSocio.Aceptar();
-                    controller.getSocios().save();
+                    controller.saveSocios();
+                    btnAceptar.setEnabled(false);
                 } catch (ExceptionDocumentacionNoAprobada exceptionDocumentacionNoAprobada) {
                     JOptionPane.showMessageDialog(null, "Debe aprobar la documentacion:\n" + exceptionDocumentacionNoAprobada.getMessage());
                 } catch (Exception ex) {
