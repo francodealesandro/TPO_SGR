@@ -71,7 +71,7 @@ public class FrmPrincipal extends JFrame {
         LineayTipoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmLineaCredito frame = new FrmLineaCredito(self, "Socios");
+                FrmLineasDeCredito frame = new FrmLineasDeCredito(self, "Socios");
                 frame.setVisible(true);
             }
         });

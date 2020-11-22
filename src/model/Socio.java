@@ -5,6 +5,7 @@ import utils.Lista;
 import java.util.Date;
 
 public class Socio {
+    private int idSocio;
     private String cuit;
     private String razonSocial;
     private Date fechaInicioActividades;
@@ -15,6 +16,10 @@ public class Socio {
     private String correo;
     private boolean esParticipe;
     private EstadoSocio estado = EstadoSocio.POSTULANTE_A_SOCIO;
+
+
+    static int idBase = 0;
+
 
     private LineaDeCredito lineaDeCredito;
 
@@ -31,6 +36,8 @@ public class Socio {
                  String direccion,
                  int telefono,
                  String correo) {
+        this.idSocio = idBase;
+        idBase ++;
         this.esParticipe = esParticipe;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
@@ -116,11 +123,12 @@ public class Socio {
     }
 
     public LineaDeCredito getLineaDeCredito() {
-        return lineaDeCredito;
+        return this.lineaDeCredito;
     }
 
     public void setLineaDeCredito(LineaDeCredito lineaDeCredito) {
         this.lineaDeCredito = lineaDeCredito;
+
     }
 
     @Override
@@ -143,5 +151,9 @@ public class Socio {
                     .filter(x -> x.getEstado() == EstadoDocumentacion.INGRESADO)
                     .map(x -> x.toString())
                     .reduce("", (x,y) -> x + y + "\n"));
+    }
+
+    public int getID() {
+        return this.idSocio;
     }
 }

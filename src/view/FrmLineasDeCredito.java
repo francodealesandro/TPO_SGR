@@ -3,12 +3,16 @@ package view;
 import controler.LineaDeCreditoController;
 import controler.SociosController;
 import model.EstadoSocio;
+import model.ExceptionDocumentacionNoAprobada;
+import model.LineaDeCredito;
 import model.Socio;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmLineasDeCredito extends JDialog {
     private JPanel pnl;
@@ -19,6 +23,8 @@ public class FrmLineasDeCredito extends JDialog {
     private JList listSocios;
     private JPanel pnlPrincipal;
     private JPanel pnlInfo;
+    private JLabel lblInfo;
+    private JLabel lblFecha;
 
     private SociosController controllerS;
     private LineaDeCreditoController controllerLDC;
@@ -56,7 +62,28 @@ public class FrmLineasDeCredito extends JDialog {
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
                 selectedIndexSocio = listSocios.getSelectedIndex();
                 selectedSocio = (Socio)listSocios.getSelectedValue();
+                btnAsignarLineaDeCredito.setEnabled(selectedSocio.getLineaDeCredito() == null);
+
+                if(selectedSocio.getLineaDeCredito() == null){
+                    lblInfo.setText("Debe asignarle un valor a la linea de credito.");
+                    lblFecha.setText("");
+
+                }
+                else{
+                    LineaDeCredito linea = selectedSocio.getLineaDeCredito();
+                    lblInfo.setText("El monto de la linea de credito es de " + linea.getMonto());
+                    lblFecha.setText("La fecha de vencimiento de la misma es " + linea.getFechaVencimiento());
+                }
+
             }
         });
+        btnAsignarLineaDeCredito.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmAsignarLineaDeCredito frame = new FrmAsignarLineaDeCredito(self, "Nueva Documentacion", selectedSocio);
+                frame.setVisible(true);
+            }
+        });
+
     }
 }

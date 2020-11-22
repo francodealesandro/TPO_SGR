@@ -49,7 +49,7 @@ public class FrmAccionista extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Accionista accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
+                    Accionista accionista = new Accionista(txtCuit.getText(),
                             txtRazonSocial.getText(),
                             Float.parseFloat(txtPorcentaje.getText()));
                     socio.getAccionistas().add(accionista);

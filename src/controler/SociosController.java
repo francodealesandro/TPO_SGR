@@ -1,9 +1,18 @@
 package controler;
 
+import model.EstadoSocio;
+import model.LineaDeCredito;
 import model.Socio;
+import utils.Lista;
 import utils.ListaDAO;
 
+import javax.sound.sampled.Line;
+import javax.swing.*;
+import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Collectors;
+
+
 
 public class SociosController {
     static SociosController instance = null;
@@ -41,6 +50,30 @@ public class SociosController {
     }
 
     public void operacionesByRango(Date desde, Date hasta, String razonSocial) {
+
+    }
+
+    public ListModel getSociosParticipes() {
+        Lista<Socio> listaReturnSocio = new Lista<>();
+
+
+        try {
+            for (Socio socio: this.getSocios().get()) {
+                if (socio.esParticipe() && socio.getEstado() != EstadoSocio.POSTULANTE_A_SOCIO)
+                    listaReturnSocio.add(socio);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listaReturnSocio;
+    }
+
+    public Socio getsocioById(int selectedIndexSocio) {
+
+        return listaSocios.get().stream().filter(x -> x.getID() == selectedIndexSocio).collect(Collectors.toList()).get(0);
+    }
+
+    public void addLineaDeCreditoASocio(LineaDeCredito linea){
 
     }
 }
