@@ -1,7 +1,9 @@
 package controler;
 
 import model.Socio;
+import utils.Lista;
 import utils.ListaDAO;
+import utils.Tabla;
 
 import java.util.Date;
 
@@ -27,12 +29,18 @@ public class SociosController {
         return listaSocios;
     }
 
-    public void addSocio(Socio model) {
-        listaSocios.add(model);
+    public Lista<Socio> getSociosListaModel() {
+        return new Lista(listaSocios);
+    }
+
+    public Tabla<Socio> getSociosTableModel() {
+        return new Tabla(listaSocios, new String[]{"Nombre", "Estado"});
+    }
+
+    public void saveSocios() {
         try {
             listaSocios.save();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

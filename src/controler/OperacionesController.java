@@ -1,6 +1,7 @@
 package controler;
 
 import model.*;
+import utils.Lista;
 import utils.ListaDAO;
 
 import java.util.Date;
@@ -19,6 +20,10 @@ public class OperacionesController {
 
     public ListaDAO<Operacion> getListaOperaciones() {
         return listaOperaciones;
+    }
+
+    public Lista<Operacion> getListaOperacionesModel() {
+        return new Lista(listaOperaciones);
     }
 
     public static OperacionesController getInstance() {

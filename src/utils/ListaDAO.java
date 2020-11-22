@@ -4,13 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class ListaDAO<T> extends Lista<T> {
+public class ListaDAO<T> extends ArrayList<T> {
     final Class<T> clase;
     protected File archivo;
 
@@ -39,7 +37,7 @@ public class ListaDAO<T> extends Lista<T> {
             JsonArray gsonArr = parser.parse(cadena).getAsJsonArray();
             Gson g = new Gson();
             for (JsonElement js : gsonArr) {
-                lista.add(g.fromJson(js, clase));
+                this.add(g.fromJson(js, clase));
             }
             b.close();
         } catch (Exception e) {
@@ -49,7 +47,7 @@ public class ListaDAO<T> extends Lista<T> {
 
     public void save() throws Exception {
         Gson g = new Gson();
-        String texto = g.toJson(lista);
+        String texto = g.toJson(this);
         FileWriter fileWriter = new FileWriter(archivo);
         fileWriter.write(texto);
         BufferedWriter bwEscritor = new BufferedWriter(fileWriter);

@@ -34,7 +34,7 @@ public class FrmLineaCredito extends JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
-        this.listSocios.setModel(controller.getSocios());
+        this.listSocios.setModel(controller.getSociosListaModel());
         this.asociarEventos();
         this.self = this;
     }

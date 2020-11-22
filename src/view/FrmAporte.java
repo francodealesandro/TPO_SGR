@@ -1,21 +1,13 @@
 package view;
 
-import controler.SociosController;
 import model.Aporte;
-import model.Documentacion;
-import model.Socio;
 
 import javax.swing.*;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 
 public class FrmAporte extends JDialog {
-    private SociosController controller;
-    private Socio socio;
 
     private JPanel pnlPrincipal;
     private JPanel pnlTitulo;
@@ -25,14 +17,17 @@ public class FrmAporte extends JDialog {
     private JButton guardarButton;
 
     private FrmAporte self;
+    private Aporte aporte;
 
-    public FrmAporte(Window owner, String titulo, Socio socio) {
+    public Aporte getAporte() {
+        return aporte;
+    }
+
+    public FrmAporte(Window owner, String titulo) {
         super(owner, titulo);
-        this.socio = socio;
-        controller = SociosController.getInstance();
 
         this.setContentPane(pnlPrincipal);
-        this.setSize(400, 400);
+        this.setSize(400, 200);
 
         //No permite volver a la pantalla anterior HASTA cerrar esta
         this.setModal(true);
@@ -52,9 +47,7 @@ public class FrmAporte extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Aporte aporte = new Aporte(Float.parseFloat(txtMonto.getText()));
-                    socio.getAportes().add(aporte);
-                    controller.getSocios().save();
+                    aporte = new Aporte(Float.parseFloat(txtMonto.getText()));
                     dispose();
                 } catch (Exception exception) {
                     exception.printStackTrace();

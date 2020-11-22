@@ -1,8 +1,8 @@
 package model;
 
-import utils.Lista;
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Socio {
     private String cuit;
@@ -18,9 +18,9 @@ public class Socio {
 
     private LineaDeCredito lineaDeCredito;
 
-    private Lista<Accionista> accionistas = new Lista<>();
-    private Lista<Documentacion> documentaciones = new Lista<>();
-    private Lista<Aporte> aportes = new Lista<>();
+    private List<Accionista> accionistas = new ArrayList<>();
+    private List<Documentacion> documentaciones = new ArrayList<>();
+    private List<Aporte> aportes = new ArrayList<>();
 
     public Socio(Boolean esParticipe,
                  String cuit,
@@ -93,25 +93,25 @@ public class Socio {
         return razonSocial;
     }
 
-    public Lista<Accionista> getAccionistas() { return accionistas; }
+    public List<Accionista> getAccionistas() { return accionistas; }
 
-    public void setAccionistas(Lista<Accionista> accionistas) {
+    public void setAccionistas(List<Accionista> accionistas) {
         this.accionistas = accionistas;
     }
 
-    public Lista<Documentacion> getDocumentaciones() {
+    public List<Documentacion> getDocumentaciones() {
         return documentaciones;
     }
 
-    public void setDocumentaciones(Lista<Documentacion> documentaciones) {
+    public void setDocumentaciones(List<Documentacion> documentaciones) {
         this.documentaciones = documentaciones;
     }
 
-    public Lista<Aporte> getAportes() {
+    public List<Aporte> getAportes() {
         return aportes;
     }
 
-    public void setAportes(Lista<Aporte> aportes) {
+    public void setAportes(List<Aporte> aportes) {
         this.aportes = aportes;
     }
 
@@ -133,13 +133,13 @@ public class Socio {
     }
 
     public void Aceptar() throws ExceptionDocumentacionNoAprobada {
-        boolean documentacionesAprobadas = this.documentaciones.get().stream()
+        boolean documentacionesAprobadas = this.documentaciones.stream()
                 .filter(x -> x.getEstado() != EstadoDocumentacion.RECHAZADO)
                 .allMatch(x -> x.getEstado() == EstadoDocumentacion.CONTROLADO);
         if (documentacionesAprobadas)
             this.estado = EstadoSocio.SOCIO_PLENO;
         else
-            throw new ExceptionDocumentacionNoAprobada(this.documentaciones.get().stream()
+            throw new ExceptionDocumentacionNoAprobada(this.documentaciones.stream()
                     .filter(x -> x.getEstado() == EstadoDocumentacion.INGRESADO)
                     .map(x -> x.toString())
                     .reduce("", (x,y) -> x + y + "\n"));

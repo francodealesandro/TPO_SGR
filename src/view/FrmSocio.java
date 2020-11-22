@@ -30,6 +30,11 @@ public class FrmSocio extends JDialog {
     private SociosController controller;
 
     private FrmSocio self;
+    private Socio socio;
+
+    public Socio getSocio() {
+        return socio;
+    }
 
     public FrmSocio(Window owner, String titulo)
     {
@@ -60,7 +65,7 @@ public class FrmSocio extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Socio socio = new Socio(radioParticipe.isSelected(),
+                    socio = new Socio(radioParticipe.isSelected(),
                             txtCuit.getText(),
                             txtRazonSocial.getText(),
                             new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaInicio.getText()),
@@ -69,7 +74,6 @@ public class FrmSocio extends JDialog {
                             txtDireccion.getText(),
                             Integer.parseInt(txtTelefono.getText()),
                             txtCorreo.getText());
-                    controller.addSocio(socio);
                     dispose();
                 } catch (ParseException parseException) {
                     parseException.printStackTrace();

@@ -48,7 +48,7 @@ public class FrmOperacionesTipo1 extends JDialog {
         this.setLocationRelativeTo(null);
         this.self = this;
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(controllerS.getSocios().get());
+        model.addAll(controllerS.getSocios());
         comboSocios.setModel(model);
 
 

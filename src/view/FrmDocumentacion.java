@@ -1,8 +1,6 @@
 package view;
 
-import controler.SociosController;
 import model.Documentacion;
-import model.Socio;
 
 import javax.swing.*;
 import javax.swing.text.DateFormatter;
@@ -23,18 +21,19 @@ public class FrmDocumentacion extends JDialog {
     private JCheckBox esObligatoriaCheckBox;
     private JCheckBox esDeseableCheckBox;
     private JFormattedTextField txtFechaRecepcion;
-    private SociosController controller;
-    private Socio socio;
 
     private FrmDocumentacion self;
+    private Documentacion documentacion;
 
-    public FrmDocumentacion(Window owner, String titulo, Socio socio) {
+    public Documentacion getDocumentacion() {
+        return documentacion;
+    }
+
+    public FrmDocumentacion(Window owner, String titulo) {
         super(owner, titulo);
-        this.socio = socio;
-        controller = SociosController.getInstance();
 
         this.setContentPane(pnlPrincipal);
-        this.setSize(400, 400);
+        this.setSize(400, 200);
 
         //No permite volver a la pantalla anterior HASTA cerrar esta
         this.setModal(true);
@@ -58,12 +57,10 @@ public class FrmDocumentacion extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Documentacion documentacion = new Documentacion(txtTipoDoc.getText(),
+                    documentacion = new Documentacion(txtTipoDoc.getText(),
                             new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaRecepcion.getText()),
                             esObligatoriaCheckBox.isSelected(),
                             esDeseableCheckBox.isSelected());
-                    socio.getDocumentaciones().add(documentacion);
-                    controller.getSocios().save();
                     dispose();
                 } catch (Exception exception) {
                     exception.printStackTrace();
