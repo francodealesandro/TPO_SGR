@@ -1,20 +1,20 @@
 package model;
 
 public class Accionista {
-    private int cuit;
+    private String cuit;
     private String razonSocial;
     private float porcentajeParticipacion;
 
     public Accionista() {
     }
 
-    public Accionista(int cuit, String razonSocial, float porcentajeParticipacion) {
+    public Accionista(String cuit, String razonSocial, float porcentajeParticipacion) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.porcentajeParticipacion = porcentajeParticipacion;
     }
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 

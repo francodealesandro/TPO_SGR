@@ -30,12 +30,12 @@ public class LineaDeCreditoController {
         return instance;
     }
 
-    public Lista<LineaDeCredito> getSocios() {
+    public Lista<LineaDeCredito> getListaLineasDeCreditos() {
         return listaLineasDeCreditos;
     }
 
-    public void addSocio(LineaDeCredito model) {
-        listaLineasDeCreditos.add(model);
+    public void addLineaDeCredito(LineaDeCredito model) {
+        Socio socioActual = sociosController.getsocioById(model.getIdSocio());
         try {
             sociosController.getSocios().save();
         } catch (Exception e) {

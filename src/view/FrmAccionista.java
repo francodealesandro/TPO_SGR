@@ -1,7 +1,6 @@
 package view;
 
 import model.Accionista;
-import model.Socio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +52,7 @@ public class FrmAccionista extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    accionista = new Accionista(Integer.parseInt(txtCuit.getText()),
+                    accionista = new Accionista(txtCuit.getText(),
                             txtRazonSocial.getText(),
                             Float.parseFloat(txtPorcentaje.getText()));
                     dispose();

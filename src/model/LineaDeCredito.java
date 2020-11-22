@@ -5,15 +5,23 @@ import java.util.Date;
 import java.util.List;
 
 public class LineaDeCredito {
-    private Date fechaVigencia;
+    private Date fechaVencimiento;
     private float monto;
     private int numeroSocio;
-    private String tipoOperacionCredito;
+    private int tipoOperacionCredito;
 
     private final List<Operacion> listaOperaciones = new ArrayList<>();
 
     public LineaDeCredito() {
 
+    }
+    public LineaDeCredito(Date fechaV, float total, Socio socio, int tipoOperacion)
+    {
+        this.fechaVencimiento = fechaV;
+        this.monto = total;
+        this.numeroSocio = socio.getID();
+        this.tipoOperacionCredito = tipoOperacion;
+        socio.setLineaDeCredito(this);
     }
 
     public void riegoVivo() {
@@ -35,6 +43,14 @@ public class LineaDeCredito {
 
     public void addOperacion(Operacion o){
         this.listaOperaciones.add(o);
+    }
+
+    public float getMonto() {
+        return monto;
+    }
+    public int getIdSocio() {return this.numeroSocio;}
+    public Date getFechaVencimiento(){
+        return this.fechaVencimiento;
     }
 }
 
