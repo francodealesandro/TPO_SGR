@@ -6,13 +6,14 @@ import model.Operacion;
 import model.Socio;
 import utils.Lista;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LineaDeCreditoController {
     static LineaDeCreditoController instance = null;
-    private Lista<LineaDeCredito> listaLineasDeCreditos = new Lista<>();
+    private List<LineaDeCredito> listaLineasDeCreditos = new ArrayList<LineaDeCredito>();
     private SociosController sociosController;
 
     private LineaDeCreditoController() {
@@ -34,7 +35,7 @@ public class LineaDeCreditoController {
         return instance;
     }
 
-    public Lista<LineaDeCredito> getListaLineasDeCreditos() {
+    public List<LineaDeCredito> getListaLineasDeCreditos() {
         return listaLineasDeCreditos;
     }
 
@@ -59,7 +60,7 @@ public class LineaDeCreditoController {
 
     public List<Socio> getSociosPorLineasPorOperacion(int tipo){
         ArrayList<Socio> listaReturn = new ArrayList<Socio>();
-        List<LineaDeCredito> lista = listaLineasDeCreditos.get().stream().filter(x -> x.getTipoOperacionCredito() == tipo).collect(Collectors.toList());
+        List<LineaDeCredito> lista = listaLineasDeCreditos.stream().filter(x -> x.getTipoOperacionCredito() == tipo).collect(Collectors.toList());
         for(LineaDeCredito linea: lista){
             listaReturn.add(sociosController.getsocioById(linea.getIdSocio()));
         }

@@ -15,7 +15,7 @@ public class FrmMenuOperaciones extends JDialog{
     private JButton hacerOperacionTipo1Button;
     private JButton hacerOperacionTipo2Button;
     private JButton hacerOperacionTipo3Button;
-    private JButton pasarOperacionDeChequeButton;
+    private JButton btnPasarOperacionesAMonetizado;
     private JButton facturarOperacionesDeChequesButton;
     private JButton volverAtrasButton;
     private JPanel pnlPrincipal;
@@ -80,15 +80,23 @@ public class FrmMenuOperaciones extends JDialog{
         hacerOperacionTipo3Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                    if (controllerLDC.getSociosPorLineasPorOperacion(3).stream().count() < 1) {
-                        JOptionPane.showMessageDialog(null, "La operacion no puede ser creada porque no hay socios con lineas de credito asignadas para este tipo de operaciones");
-                    } else {
+                if (controllerLDC.getSociosPorLineasPorOperacion(3).stream().count() < 1) {
+                    JOptionPane.showMessageDialog(null, "La operacion no puede ser creada porque no hay socios con lineas de credito asignadas para este tipo de operaciones");
+                } else {
 
-                        FrmOperacionesTipo3 frame = new FrmOperacionesTipo3(self, "Nueva operacion tipo 3");
-                        frame.setVisible(true);
-                    }
+                    FrmOperacionesTipo3 frame = new FrmOperacionesTipo3(self, "Nueva operacion tipo 3");
+                    frame.setVisible(true);
                 }
-            });
+            }
+        });
+        btnPasarOperacionesAMonetizado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                FrmPasarOperacionesAMonetizado frame = new FrmPasarOperacionesAMonetizado(self, "Pasar operaciones a monetizado");
+                frame.setVisible(true);
+
+            }
+        });
         };
 
     }

@@ -28,6 +28,7 @@ public class FrmOperacionesTipo1 extends JDialog {
     private JPanel pnlPrincipal;
     private JTextField txtMonto;
     private JComboBox comboSocios;
+    private JTextField txtTasaDescuento;
     private OperacionesController controller;
     private SociosController controllerS;
     private LineaDeCreditoController controllerLDC;
@@ -94,8 +95,8 @@ public class FrmOperacionesTipo1 extends JDialog {
                             Integer.parseInt(txtNroCheque.getText()),
                             getDate(a,m,d),
                             txtCuit.getText(),
-                            txtBanco.getText())
-                            ;
+                            txtBanco.getText(),
+                            Integer.parseInt(txtTasaDescuento.getText()));
                     controller.addCheque(op);
                     if(!op.getCertificadoEmitido()){
                         JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");

@@ -3,11 +3,13 @@ package controler;
 import model.*;
 import utils.Lista;
 import utils.ListaDAO;
+import utils.Tabla;
 
 import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OperacionesController {
     static OperacionesController instance = null;
@@ -17,7 +19,7 @@ public class OperacionesController {
     public OperacionesController(){
         this.controllerLDC = LineaDeCreditoController.getInstance();
         try {
-            for (LineaDeCredito ldc: controllerLDC.getListaLineasDeCreditos().get()) {
+            for (LineaDeCredito ldc: controllerLDC.getListaLineasDeCreditos()) {
                 for (Operacion op : ldc.getOperaciones()) {
 
                     listaOperaciones.add(op);
@@ -93,6 +95,9 @@ public class OperacionesController {
 
     }
 
+    public Tabla<Operacion> getOperacionesTableModel() {
+        return new Tabla(listaOperaciones.stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList()), new String[]{"Numero de certidicado de garantia", "Tipo de operacion"});
+    }
 
 
 

@@ -12,8 +12,8 @@ class ChequeTest {
     {
         LineaDeCredito l = new LineaDeCredito();
 
-        Cheque c1 = new Cheque(l,1,1234, new Date(), 157498, new Date(), "1345-164-1", "pedritop");
-        Cheque c2 = new Cheque(l,1,1234, new Date(), 157498, new Date(), "1345-164-1", "pedritop");
+        Cheque c1 = new Cheque(l,1,1234, new Date(), 157498, new Date(), "1345-164-1", "pedritop",12);
+        Cheque c2 = new Cheque(l,1,1234, new Date(), 157498, new Date(), "1345-164-1", "pedritop",12);
 
         int id1 = c1.getNumeroCertificadoGarantia();
         int id2 = c2.getNumeroCertificadoGarantia();
