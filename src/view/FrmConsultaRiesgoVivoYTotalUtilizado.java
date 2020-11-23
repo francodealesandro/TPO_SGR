@@ -8,8 +8,10 @@ import java.awt.event.ActionListener;
 public class FrmConsultaRiesgoVivoYTotalUtilizado extends JDialog {
     private JPanel pnlTitulo;
     private JButton verificarYObtenerLineaButton;
-    private JTextField textField1;
     private JPanel pnlPrincipal;
+    private JComboBox comboBox1;
+    private JLabel lblTotalUtilizado;
+    private JLabel lblRiesgoVivo;
     private FrmConsultaRiesgoVivoYTotalUtilizado self;
 
     public FrmConsultaRiesgoVivoYTotalUtilizado(Window owner, String titulo) {
