@@ -91,7 +91,7 @@ public class FrmSocios extends JDialog {
         tableSocios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                selectedSocio = controller.getSocios().get(tableSocios.getSelectedRow());
+                selectedSocio = controller.getSocios().  get(tableSocios.getSelectedRow());
                 accionistas = new Lista(selectedSocio.getAccionistas());
                 documentos = new Lista(selectedSocio.getDocumentaciones());
                 aportes = new Lista(selectedSocio.getAportes());

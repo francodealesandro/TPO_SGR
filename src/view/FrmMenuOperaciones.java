@@ -1,5 +1,6 @@
 package view;
 
+import controler.LineaDeCreditoController;
 import controler.OperacionesController;
 import model.Socio;
 
@@ -14,12 +15,13 @@ public class FrmMenuOperaciones extends JDialog{
     private JButton hacerOperacionTipo1Button;
     private JButton hacerOperacionTipo2Button;
     private JButton hacerOperacionTipo3Button;
-    private JButton emitirCertificadoDeGarantiaButton;
-    private JButton pasarOperacionAMonetizadoButton;
+    private JButton pasarOperacionDeChequeButton;
+    private JButton facturarOperacionesDeChequesButton;
     private JButton volverAtrasButton;
     private JPanel pnlPrincipal;
     private JList operacionesList;
     private OperacionesController controller;
+    private LineaDeCreditoController controllerLDC;
 
 
     private FrmMenuOperaciones self;
@@ -33,6 +35,7 @@ public class FrmMenuOperaciones extends JDialog{
         this.setContentPane(pnlPrincipal);
         this.setSize(600, 600);
         controller = OperacionesController.getInstance();
+        controllerLDC = LineaDeCreditoController.getInstance();
 
 
         //No permite volver a la pantalla anterior HASTA cerrar esta
@@ -52,31 +55,41 @@ public class FrmMenuOperaciones extends JDialog{
         hacerOperacionTipo1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesTipo1 frame = new FrmOperacionesTipo1(self, "Nueva operacion tipo 1");
-                frame.setVisible(true);
+                if (controllerLDC.getSociosPorLineasPorOperacion(1).stream().count() < 1){
+                    JOptionPane.showMessageDialog(null, "La operacion no puede ser creada porque no hay socios con lineas de credito asignadas para este tipo de operaciones");
+                }
+                else {
+                    FrmOperacionesTipo1 frame = new FrmOperacionesTipo1(self, "Nueva operacion tipo 1");
+                    frame.setVisible(true);
+                }
             }
         });
         hacerOperacionTipo2Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesTipo2 frame = new FrmOperacionesTipo2(self, "Nueva operacion tipo 2");
-                frame.setVisible(true);
+                if (controllerLDC.getSociosPorLineasPorOperacion(2).stream().count() < 1){
+                    JOptionPane.showMessageDialog(null, "La operacion no puede ser creada porque no hay socios con lineas de credito asignadas para este tipo de operaciones");
+                }
+                else {
+                    FrmOperacionesTipo2 frame = new FrmOperacionesTipo2(self, "Nueva operacion tipo 2");
+                    frame.setVisible(true);
+                }
             }
         });
 
         hacerOperacionTipo3Button.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                FrmOperacionesTipo3 frame = new FrmOperacionesTipo3(self, "Nueva operacion tipo 3");
-                frame.setVisible(true);
-            }
-        });
-        volverAtrasButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
-        }
-    });
+            public void actionPerformed(ActionEvent e){
+                    if (controllerLDC.getSociosPorLineasPorOperacion(3).stream().count() < 1) {
+                        JOptionPane.showMessageDialog(null, "La operacion no puede ser creada porque no hay socios con lineas de credito asignadas para este tipo de operaciones");
+                    } else {
+
+                        FrmOperacionesTipo3 frame = new FrmOperacionesTipo3(self, "Nueva operacion tipo 3");
+                        frame.setVisible(true);
+                    }
+                }
+            });
+        };
 
     }
-}
+

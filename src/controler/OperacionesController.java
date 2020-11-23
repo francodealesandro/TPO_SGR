@@ -4,21 +4,32 @@ import model.*;
 import utils.Lista;
 import utils.ListaDAO;
 
+import javax.sound.sampled.Line;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class OperacionesController {
     static OperacionesController instance = null;
-    private ListaDAO<Operacion> listaOperaciones;
+    private LineaDeCreditoController controllerLDC = null;
+    private List<Operacion> listaOperaciones = new ArrayList<Operacion>();
 
     public OperacionesController(){
+        this.controllerLDC = LineaDeCreditoController.getInstance();
         try {
-            listaOperaciones = new ListaDAO(Operacion.class);
+            for (LineaDeCredito ldc: controllerLDC.getListaLineasDeCreditos().get()) {
+                for (Operacion op : ldc.getOperaciones()) {
+
+                    listaOperaciones.add(op);
+                }
+                ;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public ListaDAO<Operacion> getListaOperaciones() {
+    public List<Operacion> getListaOperaciones() {
         return listaOperaciones;
     }
 
@@ -47,11 +58,10 @@ public class OperacionesController {
         listaOperaciones.add(c);
 
         try {
-            listaOperaciones.save();
+            controllerLDC.guardarDatos();
         }
         catch (Exception e){
             e.printStackTrace();
-
         }
 
 
@@ -62,11 +72,10 @@ public class OperacionesController {
         listaOperaciones.add(cuenta);
 
         try {
-            listaOperaciones.save();
-            }
+            controllerLDC.guardarDatos();
+        }
         catch (Exception e){
             e.printStackTrace();
-
         }
 
     }
@@ -76,11 +85,10 @@ public class OperacionesController {
         listaOperaciones.add(p);
 
         try {
-            listaOperaciones.save();
+            controllerLDC.guardarDatos();
         }
         catch (Exception e){
             e.printStackTrace();
-
         }
 
     }

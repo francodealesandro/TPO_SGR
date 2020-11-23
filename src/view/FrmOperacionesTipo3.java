@@ -98,6 +98,9 @@ public class FrmOperacionesTipo3 extends JDialog{
                         comboSistema.getSelectedItem().toString());
 
                 controller.addPrestamo(p);
+                if(!p.getCertificadoEmitido()){
+                    JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                }
                 dispose();
             }
         });

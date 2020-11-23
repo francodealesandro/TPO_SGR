@@ -91,6 +91,9 @@ public class FrmOperacionesTipo2 extends JDialog{
                         txtEmpresa.getText(),
                         getDate(a,m,d));
                 controller.addCuentaCorriente(cc);
+                if(!cc.getCertificadoEmitido()){
+                    JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                }
                 dispose();
             }
         });

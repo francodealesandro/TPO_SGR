@@ -50,36 +50,28 @@
               <text value="Hacer operacion tipo 2"/>
             </properties>
           </component>
+          <component id="dd080" class="javax.swing.JButton" binding="pasarOperacionDeChequeButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Pasar operacion de cheque a monetizado"/>
+            </properties>
+          </component>
+          <component id="7855f" class="javax.swing.JButton" binding="facturarOperacionesDeChequesButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Facturar operaciones de cheques"/>
+            </properties>
+          </component>
           <component id="242fc" class="javax.swing.JButton" binding="hacerOperacionTipo3Button" default-binding="true">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Hacer operacion tipo 3"/>
-            </properties>
-          </component>
-          <component id="dd080" class="javax.swing.JButton" binding="emitirCertificadoDeGarantiaButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Emitir certificado de garantia"/>
-            </properties>
-          </component>
-          <component id="7855f" class="javax.swing.JButton" binding="pasarOperacionAMonetizadoButton" default-binding="true">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Pasar operacion a monetizado"/>
-            </properties>
-          </component>
-          <component id="ca293" class="javax.swing.JButton" binding="volverAtrasButton" default-binding="true">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Volver atras"/>
             </properties>
           </component>
         </children>
