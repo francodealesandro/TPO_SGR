@@ -61,5 +61,8 @@ public abstract class Operacion {
         return monto;
     }
 
+    public boolean getCertificadoEmitido(){
+        return this.certificadoEmitido;
+    }
 
 }

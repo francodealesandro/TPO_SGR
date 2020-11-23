@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lista<T> extends AbstractListModel {
-    protected List<T> lista = new ArrayList<T>();
+    protected List<T> lista;
 
     public Lista() {
+        this.lista = new ArrayList<>();
+    }
+
+    public Lista(List<T> lista) {
+        this.lista = lista;
     }
 
     public List<T> get() {

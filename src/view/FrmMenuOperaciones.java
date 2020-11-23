@@ -42,7 +42,7 @@ public class FrmMenuOperaciones extends JDialog{
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         this.self = this;
-        this.operacionesList.setModel(controller.getListaOperaciones());
+        this.operacionesList.setModel(controller.getListaOperacionesModel());
         this.asociarEventos();
 
 
