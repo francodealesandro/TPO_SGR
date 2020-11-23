@@ -1,5 +1,6 @@
 package view;
 
+import controler.LineaDeCreditoController;
 import controler.OperacionesController;
 import controler.SociosController;
 import model.Cheque;
@@ -27,7 +28,7 @@ public class FrmOperacionesTipo2 extends JDialog{
 
     private OperacionesController controller;
     private SociosController controllerS;
-
+    private LineaDeCreditoController controllerLDC;
 
     private FrmOperacionesTipo2 self;
 
@@ -36,7 +37,7 @@ public class FrmOperacionesTipo2 extends JDialog{
         super(owner, titulo);
         controller = OperacionesController.getInstance();
         controllerS = SociosController.getInstance();
-
+        controllerLDC = LineaDeCreditoController.getInstance();
 
 
         this.setContentPane(pnlPrincipal);
@@ -51,7 +52,7 @@ public class FrmOperacionesTipo2 extends JDialog{
         this.self = this;
 
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(controllerS.getSocios());
+        model.addAll(controllerLDC.getSociosPorLineasPorOperacion(2));
         comboSocios.setModel(model);
 
         this.asociarEventos();

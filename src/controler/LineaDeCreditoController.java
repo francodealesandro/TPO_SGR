@@ -6,6 +6,9 @@ import model.Operacion;
 import model.Socio;
 import utils.Lista;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class LineaDeCreditoController {
     static LineaDeCreditoController instance = null;
     private Lista<LineaDeCredito> listaLineasDeCreditos = new Lista<>();
@@ -30,7 +33,7 @@ public class LineaDeCreditoController {
         return instance;
     }
 
-    public Lista<LineaDeCredito> getListaLineasDeCreditos() {
+    public Lista<LineaDeCredito> getListaLineasDeClisreditos() {
         return listaLineasDeCreditos;
     }
 
@@ -44,5 +47,14 @@ public class LineaDeCreditoController {
     }
 
 
+    public List<Socio> getSociosPorLineasPorOperacion(int tipo){
+        List<Socio> listaReturn = null;
+        List<LineaDeCredito> lista = listaLineasDeCreditos.get().stream().filter(x -> x.getTipoOperacionCredito() == tipo).collect(Collectors.toList());
+        for(LineaDeCredito linea: lista){
+            listaReturn.add(sociosController.getsocioById(linea.getIdSocio()));
+        }
+        int h = 1;
+        return listaReturn;
+    }
 
 }

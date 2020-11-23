@@ -1,5 +1,6 @@
 package view;
 
+import controler.LineaDeCreditoController;
 import controler.OperacionesController;
 import controler.SociosController;
 import model.*;
@@ -29,6 +30,7 @@ public class FrmOperacionesTipo1 extends JDialog {
     private JComboBox comboSocios;
     private OperacionesController controller;
     private SociosController controllerS;
+    private LineaDeCreditoController controllerLDC;
 
     private FrmOperacionesTipo1 self;
 
@@ -37,6 +39,8 @@ public class FrmOperacionesTipo1 extends JDialog {
         super(owner, titulo);
         controller = OperacionesController.getInstance();
         controllerS = SociosController.getInstance();
+        controllerLDC = LineaDeCreditoController.getInstance();
+
         this.setContentPane(pnlPrincipal);
         this.setSize(600, 600);
 
@@ -48,7 +52,7 @@ public class FrmOperacionesTipo1 extends JDialog {
         this.setLocationRelativeTo(null);
         this.self = this;
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(controllerS.getSocios());
+        model.addAll(controllerLDC.getSociosPorLineasPorOperacion(1));
         comboSocios.setModel(model);
 
 
@@ -93,6 +97,9 @@ public class FrmOperacionesTipo1 extends JDialog {
                             txtBanco.getText())
                             ;
                     controller.addCheque(op);
+                    if(!op.getCertificadoEmitido()){
+                        JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                    }
                     dispose();
             }
         });

@@ -24,7 +24,7 @@ public class LineaDeCredito {
         socio.setLineaDeCredito(this);
     }
 
-    public void riegoVivo() {
+    public void riesgoVivo() {
 
     }
 
@@ -52,5 +52,6 @@ public class LineaDeCredito {
     public Date getFechaVencimiento(){
         return this.fechaVencimiento;
     }
+    public int getTipoOperacionCredito(){return this.tipoOperacionCredito;}
 }
 

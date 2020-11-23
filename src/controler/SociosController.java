@@ -8,6 +8,7 @@ import utils.ListaDAO;
 import utils.Tabla;
 
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class SociosController {
@@ -68,4 +69,5 @@ public class SociosController {
     public void addLineaDeCreditoASocio(LineaDeCredito linea){
 
     }
+
 }

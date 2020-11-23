@@ -25,6 +25,7 @@ public class FrmLineasDeCredito extends JDialog {
     private JPanel pnlInfo;
     private JLabel lblInfo;
     private JLabel lblFecha;
+    private JLabel lblTipoOperaciones;
 
     private SociosController controllerS;
     private LineaDeCreditoController controllerLDC;
@@ -66,11 +67,13 @@ public class FrmLineasDeCredito extends JDialog {
                 if(selectedSocio.getLineaDeCredito() == null){
                     lblInfo.setText("Debe asignarle un valor a la linea de credito.");
                     lblFecha.setText("");
+                    lblTipoOperaciones.setText("");
                 }
                 else{
                     LineaDeCredito linea = selectedSocio.getLineaDeCredito();
                     lblInfo.setText("El monto de la linea de credito es de " + linea.getMonto());
                     lblFecha.setText("La fecha de vencimiento de la misma es " + linea.getFechaVencimiento());
+                    lblTipoOperaciones.setText("La linea sirve para operaciones de tipo " + linea.getTipoOperacionCredito());
                 }
             }
         });
