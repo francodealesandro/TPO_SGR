@@ -51,7 +51,7 @@ public class LineaDeCreditoController {
         List<Socio> listaReturn = null;
         List<LineaDeCredito> lista = listaLineasDeCreditos.get().stream().filter(x -> x.getTipoOperacionCredito() == tipo).collect(Collectors.toList());
         for(LineaDeCredito linea: lista){
-            listaReturn.add(sociosController.getsocioById(linea.getIdSocio()));
+            lista Return.add(sociosController.getsocioById(linea.getIdSocio()));
         }
         int h = 1;
         return listaReturn;
