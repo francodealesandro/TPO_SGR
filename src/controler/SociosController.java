@@ -17,6 +17,7 @@ public class SociosController {
     private SociosController() {
         try {
             listaSocios = new ListaDAO(Socio.class);
+            Socio.setIdBase(listaSocios.stream().map(s -> s.getID()).max(Integer::compareTo).orElse(-1)+1);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -22,6 +22,9 @@ public class Socio {
 
     static int idBase = 0;
 
+    public static void setIdBase(int idBase) {
+        Socio.idBase = idBase;
+    }
 
     private LineaDeCredito lineaDeCredito;
 
