@@ -30,7 +30,7 @@ public class FrmConsultaPorcentajeOperacion extends JDialog {
         this.setModal(true);
         //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        cbSocios.setModel(new DefaultComboBoxModel(controllerS.getSocios().stream().toArray()));
+        cbSocios.setModel(new DefaultComboBoxModel(controllerS.getSociosParticipes().get().stream().toArray()));
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
         this.asociarEventos();
