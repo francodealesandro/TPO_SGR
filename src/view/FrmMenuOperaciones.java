@@ -16,7 +16,7 @@ public class FrmMenuOperaciones extends JDialog{
     private JButton hacerOperacionTipo2Button;
     private JButton hacerOperacionTipo3Button;
     private JButton btnPasarOperacionesAMonetizado;
-    private JButton facturarOperacionesDeChequesButton;
+    private JButton btnFacturarOperacionesDeCheques;
     private JButton volverAtrasButton;
     private JPanel pnlPrincipal;
     private JList operacionesList;
@@ -93,6 +93,14 @@ public class FrmMenuOperaciones extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e){
                 FrmPasarOperacionesAMonetizado frame = new FrmPasarOperacionesAMonetizado(self, "Pasar operaciones a monetizado");
+                frame.setVisible(true);
+
+            }
+        });
+        btnFacturarOperacionesDeCheques.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                FrmFacturarComisiones frame = new FrmFacturarComisiones(self, "Facturar comisiones");
                 frame.setVisible(true);
 
             }

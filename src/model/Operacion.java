@@ -87,14 +87,34 @@ public abstract class Operacion {
 
         Comision c = new Comision(
                 this.getNumeroCertificadoGarantia(),
-                this.getMonto() * getMontoComision()
+                (this.getMonto() * getMontoComision())/100
         );
         this.comision = c;
 
     }
 
-    public Comision getComision() {
-        return comision;
+    public Comision getComision(){ return this.comision;}
+
+    public String getEstadoComision(){
+        if(this.comision != null){
+            return this.comision.getEstado();
+        }else{
+            return "";
+
+        }
     }
 
+    public float getCantidadComision(){
+        if(this.comision != null){
+            return this.comision.getCantidad();
+        }else{
+            return 0;
+        }
+    }
+
+    public void cambiarEstadoComision(String s){
+        if(this.comision != null){
+            this.comision.setEstado(s);
+        }
+    }
 }

@@ -128,4 +128,11 @@ public class OperacionesController {
                 new String[]{"NumeroCertificadoGarantia", "TipoOperacionString", "Estado", "Monto"});
     }
 
+    public Tabla<Operacion> getComisionesTableModel() {
+        return new Tabla(listaOperaciones.stream().filter(x -> x.getComision() != null && x.getEstadoComision() == "Calculada").collect(Collectors.toList()), new String[]{"NumeroCertificadoGarantia", "CantidadComision"});
+    }
+
+    public void facturarComisiones() {
+        listaOperaciones.stream().filter(x -> x.getEstadoComision() == "Calculada").forEach(x -> x.cambiarEstadoComision("Facturada"));
+    }
 }
