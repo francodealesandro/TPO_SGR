@@ -52,7 +52,6 @@ public class FrmPasarOperacionesAMonetizado extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.setOperacionAMonetizado(numeroCertificadoSelected);
-
             }
         });
         tableOperaciones.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
