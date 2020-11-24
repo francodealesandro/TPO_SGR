@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LineaDeCredito {
     private Date fechaVencimiento;
@@ -24,8 +25,35 @@ public class LineaDeCredito {
         socio.setLineaDeCredito(this);
     }
 
-    public void riesgoVivo() {
+    public float riesgoVivo() {
 
+        List<Operacion> listaOperacionesMonetizadas = listaOperaciones.stream().filter(x -> x.getEstado() == "Monetizado").collect(Collectors.toList());
+        float respuesta = 0;
+        for(Operacion op: listaOperacionesMonetizadas){
+            switch(op.getTipoOperacion()){
+                case 1:
+                    respuesta += op.getMonto();
+                    break;
+                case 2:
+                    respuesta += op.getMonto();
+                    break;
+                case 3:
+                    Prestamo p = (Prestamo)op;
+                    respuesta+= p.getCantidadCuotasImpagas() * (op.getMonto() / p.getCantidadCuotas());
+                    break;
+            }
+
+        }
+        return respuesta;
+    }
+
+    public float calcularTotalUtilizado(){
+        List<Operacion> listaEmitido = listaOperaciones.stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList());
+        float totalUtilizado = this.riesgoVivo();
+        for(Operacion op: listaEmitido){
+            totalUtilizado += op.getMonto();
+        }
+        return totalUtilizado;
     }
 
     public float calcularRestante() {

@@ -134,5 +134,6 @@ public class OperacionesController {
 
     public void facturarComisiones() {
         listaOperaciones.stream().filter(x -> x.getEstadoComision() == "Calculada").forEach(x -> x.cambiarEstadoComision("Facturada"));
+        controllerLDC.guardarDatos();
     }
 }

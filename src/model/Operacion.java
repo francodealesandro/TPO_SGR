@@ -116,5 +116,7 @@ public abstract class Operacion {
         if(this.comision != null){
             this.comision.setEstado(s);
         }
+
     }
+
 }
