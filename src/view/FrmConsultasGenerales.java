@@ -42,15 +42,14 @@ public class FrmConsultasGenerales extends JDialog{
         totalDeComisionesCalculadasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmTotalComisiones frame = new FrmTotalComisiones(self, "Total de comisiones calculadas en un dia por operaciones de cheques");
+                FrmTotalComisiones frame = new FrmTotalComisiones(self, "Consultas Generales");
                 frame.setVisible(true);
-
             }
         });
         operacionesAvaladasANombreButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesAvaladas frame = new FrmOperacionesAvaladas(self, "Operaciones Avaladas");
+                FrmOperacionesAvaladas frame = new FrmOperacionesAvaladas(self, "Consultas Generales");
                 frame.setVisible(true);
 
             }
@@ -58,7 +57,7 @@ public class FrmConsultasGenerales extends JDialog{
         valorPromedioDeLaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPromedioTasaDescuento frame = new FrmPromedioTasaDescuento(self, "Promedio tasa de descuento");
+                FrmPromedioTasaDescuento frame = new FrmPromedioTasaDescuento(self, "Consultas Generales");
                 frame.setVisible(true);
 
             }
@@ -66,7 +65,7 @@ public class FrmConsultasGenerales extends JDialog{
         porcentajeDeComisionPorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmConsultaPorcentajeOperacion frame = new FrmConsultaPorcentajeOperacion(self, "Total de comisiones calculadas en un dia");
+                FrmConsultaPorcentajeOperacion frame = new FrmConsultaPorcentajeOperacion(self, "Consultas Generales");
                 frame.setVisible(true);
 
             }

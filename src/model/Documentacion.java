@@ -1,5 +1,7 @@
 package model;
 
+import controler.CambioEstadoController;
+
 import java.util.Date;
 
 public class Documentacion {
@@ -7,13 +9,12 @@ public class Documentacion {
     private Date fechaRecepcion;
     private EstadoDocumentacion estado;
     private boolean esObligatoria;
+    private boolean esDeseable;
 
     @Override
     public String toString() {
         return tipoDoc;
     }
-
-    private boolean esDeseable;
 
     public Documentacion(String tipoDoc, Date fechaRecepcion, boolean esObligatoria, boolean esDeseable) {
         this.tipoDoc = tipoDoc;
@@ -23,11 +24,10 @@ public class Documentacion {
         this.esDeseable = esDeseable;
     }
 
-    public void cambiarEstado(EstadoDocumentacion estado)
-    {
+    public void cambiarEstado(EstadoDocumentacion estado){
+        CambioEstadoController.getInstance().GuardarCambio(this.estado.toString(), estado.toString());
         this.estado = estado;
     }
-
 
     public EstadoDocumentacion getEstado() {
         return estado;

@@ -28,7 +28,7 @@ public class Prestamo extends Operacion {
     }
 
     @Override
-    float getMontoComision() {
+    public float getMontoComision() {
         return 4;
     }
 

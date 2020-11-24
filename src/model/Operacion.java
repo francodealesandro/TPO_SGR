@@ -1,5 +1,7 @@
 package model;
 
+import controler.CambioEstadoController;
+
 import java.util.Date;
 
 public abstract class Operacion {
@@ -16,9 +18,9 @@ public abstract class Operacion {
 
     }
 
-    public void cambiarEstado(String estado) {
+    public void cambiarEstado(String estado){
+        CambioEstadoController.getInstance().GuardarCambio(this.estado, estado);
         this.estado = estado;
-
     }
 
     public void factibilidad() {
@@ -84,7 +86,7 @@ public abstract class Operacion {
         return respuesta;
     }
 
-    abstract float getMontoComision();
+    public abstract float getMontoComision();
 
     public void addComision(){
 
@@ -117,7 +119,7 @@ public abstract class Operacion {
 
     public void cambiarEstadoComision(String s){
         if(this.comision != null){
-            this.comision.setEstado(s);
+            this.comision.cambiarEstado(s);
         }
 
     }

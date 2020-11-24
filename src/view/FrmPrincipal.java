@@ -48,7 +48,7 @@ public class FrmPrincipal extends JFrame {
         sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmSocios frame = new FrmSocios(self, "Socios");
+                FrmSocios frame = new FrmSocios(self, "Sistema SGR");
                 frame.setVisible(true);
             }
 
@@ -56,7 +56,7 @@ public class FrmPrincipal extends JFrame {
         operacionesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                FrmMenuOperaciones frame = new FrmMenuOperaciones(self, "Socios");
+                FrmMenuOperaciones frame = new FrmMenuOperaciones(self, "Sistema SGR");
                 frame.setVisible(true);
             }
 
@@ -64,14 +64,14 @@ public class FrmPrincipal extends JFrame {
         consultasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmConsultasGenerales frame = new FrmConsultasGenerales(self, "Socios");
+                FrmConsultasGenerales frame = new FrmConsultasGenerales(self, "Sistema SGR");
                 frame.setVisible(true);
             }
         });
         LineayTipoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmLineasDeCredito frame = new FrmLineasDeCredito(self, "Socios");
+                FrmLineasDeCredito frame = new FrmLineasDeCredito(self, "Sistema SGR");
                 frame.setVisible(true);
             }
         });
