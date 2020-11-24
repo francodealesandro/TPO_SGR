@@ -35,7 +35,7 @@ public class FrmConsultaRiesgoVivoYTotalUtilizado extends JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
-        comboSocios.setModel(new DefaultComboBoxModel(controllerS.getSocios().stream().toArray()));
+        comboSocios.setModel(new DefaultComboBoxModel(controllerS.getSociosParticipes().get().toArray()));
         this.asociarEventos();
         this.self = this;
     }

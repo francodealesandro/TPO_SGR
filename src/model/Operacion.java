@@ -26,6 +26,7 @@ public abstract class Operacion {
     }
 
     public Operacion(LineaDeCredito linea, int tipoOperacion, float monto, Date fecha) {
+
         this.numeroCertificadoGarantia = idBase;
         idBase++;
         this.tipoOperacion = tipoOperacion;
@@ -42,6 +43,8 @@ public abstract class Operacion {
 
 
     }
+
+    public static void setIdBase(int i){idBase = i;}
 
     public int getTipoOperacion() {
         return tipoOperacion;

@@ -27,7 +27,8 @@ public class OperacionesController {
                 }
                 ;
             }
-        } catch (Exception e) {
+            Operacion.setIdBase(listaOperaciones.stream().map(s -> s.getNumeroCertificadoGarantia()).max(Integer::compareTo).orElse(-1)+1);            }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

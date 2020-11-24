@@ -27,7 +27,7 @@ public class LineaDeCredito {
 
     public float riesgoVivo() {
 
-        List<Operacion> listaOperacionesMonetizadas = listaOperaciones.stream().filter(x -> x.getEstado() == "Monetizado").collect(Collectors.toList());
+        List<Operacion> listaOperacionesMonetizadas = listaOperaciones.stream().filter(x -> x.getEstado().equals("Monetizado")).collect(Collectors.toList());
         float respuesta = 0;
         for(Operacion op: listaOperacionesMonetizadas){
             switch(op.getTipoOperacion()){
@@ -48,7 +48,7 @@ public class LineaDeCredito {
     }
 
     public float calcularTotalUtilizado(){
-        List<Operacion> listaEmitido = listaOperaciones.stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList());
+        List<Operacion> listaEmitido = listaOperaciones.stream().filter(x -> x.getEstado().equals("Con certificado emitido")).collect(Collectors.toList());
         float totalUtilizado = this.riesgoVivo();
         for(Operacion op: listaEmitido){
             totalUtilizado += op.getMonto();
