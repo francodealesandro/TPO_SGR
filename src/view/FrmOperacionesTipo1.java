@@ -77,6 +77,9 @@ public class FrmOperacionesTipo1 extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (Float.parseFloat(txtMonto.getText()) > controllerS.getLimiteFondoRiesgo())
+                    JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
+                else {
                     int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());
                     int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
                     int d = Integer.parseInt(fechaVencimientoD.getSelectedItem().toString());
@@ -102,6 +105,7 @@ public class FrmOperacionesTipo1 extends JDialog {
                         JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
                     }
                     dispose();
+                }
             }
         });
     }

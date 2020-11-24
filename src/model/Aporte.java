@@ -15,4 +15,9 @@ public class Aporte {
         this.monto = monto;
         this.fecha = new Date();
     }
+
+    public float getMonto() {
+        return monto;
+    }
+
 }

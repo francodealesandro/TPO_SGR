@@ -5,7 +5,6 @@ import utils.Lista;
 import utils.ListaDAO;
 import utils.Tabla;
 
-import javax.swing.table.TableModel;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,14 +47,6 @@ public class SociosController {
         }
     }
 
-    public void getTotalDeComisiones(int socioID){
-
-    }
-
-    public void operacionesByRango(Date desde, Date hasta, String razonSocial) {
-
-    }
-
     public Lista<Socio> getSociosParticipes() {
         return new Lista(this.getSocios().stream()
                 .filter(socio -> socio.esParticipe() && socio.getEstado() != EstadoSocio.POSTULANTE_A_SOCIO)
@@ -64,10 +55,6 @@ public class SociosController {
 
     public Socio getsocioById(int selectedIndexSocio) {
         return listaSocios.stream().filter(x -> x.getID() == selectedIndexSocio).findFirst().orElseGet(null);
-    }
-
-    public void addLineaDeCreditoASocio(LineaDeCredito linea){
-
     }
 
     public float[] PromedioTasaDescuento(Date desde, Date hasta, TipoEmpresa tipoEmpresa) {
@@ -88,5 +75,13 @@ public class SociosController {
                 .filter(op -> op.getTipoOperacion() == tipoOperacion)
                 .map(op -> op.getMontoComision())
                 .reduce(0f, (acum, comision) -> acum + comision);
+    }
+
+    public float getLimiteFondoRiesgo() {
+        return listaSocios.stream().filter(socio -> socio.esProtector())
+                .map(socio -> socio.getAportes())
+                .flatMap(List::stream).collect(Collectors.toList())
+                .stream().map(aporte -> aporte.getMonto())
+                .reduce(0f, (acum, monto) -> acum + monto) * 0.05f;
     }
 }

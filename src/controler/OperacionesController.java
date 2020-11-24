@@ -2,10 +2,8 @@ package controler;
 
 import model.*;
 import utils.Lista;
-import utils.ListaDAO;
 import utils.Tabla;
 
-import javax.sound.sampled.Line;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +23,6 @@ public class OperacionesController {
 
                     listaOperaciones.add(op);
                 }
-                ;
             }
             Operacion.setIdBase(listaOperaciones.stream().map(s -> s.getNumeroCertificadoGarantia()).max(Integer::compareTo).orElse(-1)+1);            }
         catch (Exception e) {
@@ -47,18 +44,8 @@ public class OperacionesController {
         return instance;
     }
 
-    public void calcularPromedioDescuentos(int total, int iteraciones) {
-
-    }
-
-    public void getOperacionesEnChequesYPromedios(int cuit, Date desde, Date hasta) {
-
-    }
-
-
     public void addCheque(Cheque c)
     {
-
         listaOperaciones.add(c);
 
         try {
@@ -67,8 +54,6 @@ public class OperacionesController {
         catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     public void addCuentaCorriente(CuentaCorriente cuenta)

@@ -78,30 +78,33 @@ public class FrmOperacionesTipo3 extends JDialog{
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int a = Integer.parseInt(FechaAcreditacionA.getSelectedItem().toString());
-                int m = Integer.parseInt(FechaAcreditacionM.getSelectedItem().toString());
-                int d = Integer.parseInt(FechaAcreditacionD.getSelectedItem().toString());
-                Date fechaActual = new Date();
-                Socio s = (Socio)comboSocios.getSelectedItem();
-                LineaDeCredito linea = s.getLineaDeCredito();
+                if (Float.parseFloat(txtImporte.getText()) > controllerS.getLimiteFondoRiesgo())
+                    JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
+                else {
+                    int a = Integer.parseInt(FechaAcreditacionA.getSelectedItem().toString());
+                    int m = Integer.parseInt(FechaAcreditacionM.getSelectedItem().toString());
+                    int d = Integer.parseInt(FechaAcreditacionD.getSelectedItem().toString());
+                    Date fechaActual = new Date();
+                    Socio s = (Socio) comboSocios.getSelectedItem();
+                    LineaDeCredito linea = s.getLineaDeCredito();
 
+                    Prestamo p = new Prestamo(
+                            linea,
+                            3,
+                            Float.parseFloat(txtImporte.getText()),
+                            fechaActual,
+                            txtBanco.getText(),
+                            Float.parseFloat(txtTasa.getText()),
+                            getDate(a, m, d),
+                            Integer.parseInt(txtCuotas.getText()),
+                            comboSistema.getSelectedItem().toString());
 
-                Prestamo p = new Prestamo(
-                        linea,
-                        3,
-                        Float.parseFloat(txtImporte.getText()),
-                        fechaActual,
-                        txtBanco.getText(),
-                        Float.parseFloat(txtTasa.getText()),
-                        getDate(a,m,d),
-                        Integer.parseInt(txtCuotas.getText()),
-                        comboSistema.getSelectedItem().toString());
-
-                controller.addPrestamo(p);
-                if(!p.getCertificadoEmitido()){
-                    JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                    controller.addPrestamo(p);
+                    if (!p.getCertificadoEmitido()) {
+                        JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                    }
+                    dispose();
                 }
-                dispose();
             }
         });
     }

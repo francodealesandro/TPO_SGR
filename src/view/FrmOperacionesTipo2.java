@@ -76,25 +76,29 @@ public class FrmOperacionesTipo2 extends JDialog{
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());
-                int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
-                int d = Integer.parseInt(fechaVencimientoD.getSelectedItem().toString());
-                Date fechaActual = new Date();
-                Socio s = (Socio)comboSocios.getSelectedItem();
-                LineaDeCredito linea = s.getLineaDeCredito();
+                if (Float.parseFloat(txtImporte.getText()) > controllerS.getLimiteFondoRiesgo())
+                    JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
+                else {
+                    int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());
+                    int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
+                    int d = Integer.parseInt(fechaVencimientoD.getSelectedItem().toString());
+                    Date fechaActual = new Date();
+                    Socio s = (Socio) comboSocios.getSelectedItem();
+                    LineaDeCredito linea = s.getLineaDeCredito();
 
-                CuentaCorriente cc = new CuentaCorriente(
-                        linea,
-                        2,
-                        Float.parseFloat(txtImporte.getText()),
-                        fechaActual,
-                        txtEmpresa.getText(),
-                        getDate(a,m,d));
-                controller.addCuentaCorriente(cc);
-                if(!cc.getCertificadoEmitido()){
-                    JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                    CuentaCorriente cc = new CuentaCorriente(
+                            linea,
+                            2,
+                            Float.parseFloat(txtImporte.getText()),
+                            fechaActual,
+                            txtEmpresa.getText(),
+                            getDate(a, m, d));
+                    controller.addCuentaCorriente(cc);
+                    if (!cc.getCertificadoEmitido()) {
+                        JOptionPane.showMessageDialog(null, "La operacion no puede ser cursada por la linea de credito del socio seleccionado");
+                    }
+                    dispose();
                 }
-                dispose();
             }
         });
     }
