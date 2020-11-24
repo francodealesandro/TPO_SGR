@@ -1,5 +1,7 @@
 package model;
 
+import controler.CambioEstadoController;
+
 public class Comision {
 
     private String estado;
@@ -20,7 +22,8 @@ public class Comision {
 
     public String getEstado(){ return this.estado;}
 
-    public void setEstado(String s){
+    public void cambiarEstado(String s){
+        CambioEstadoController.getInstance().GuardarCambio(this.estado, s);
         this.estado = s;
     }
 

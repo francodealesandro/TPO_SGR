@@ -1,5 +1,7 @@
 package model;
 
+import controler.CambioEstadoController;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,8 +52,9 @@ public class Socio {
 
     }
 
-    public void cambiarEstado(){
-
+    public void cambiarEstado(EstadoSocio estado){
+        CambioEstadoController.getInstance().GuardarCambio(this.estado.toString(), estado.toString());
+        this.estado = estado;
     }
 
     public void controlPostulantes(){
@@ -145,7 +148,7 @@ public class Socio {
                 .filter(x -> x.getEstado() != EstadoDocumentacion.RECHAZADO)
                 .allMatch(x -> x.getEstado() == EstadoDocumentacion.CONTROLADO);
         if (documentacionesAprobadas)
-            this.estado = EstadoSocio.SOCIO_PLENO;
+            cambiarEstado(EstadoSocio.SOCIO_PLENO);
         else
             throw new ExceptionDocumentacionNoAprobada(this.documentaciones.stream()
                     .filter(x -> x.getEstado() == EstadoDocumentacion.INGRESADO)
