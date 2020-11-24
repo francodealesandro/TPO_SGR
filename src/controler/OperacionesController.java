@@ -99,6 +99,13 @@ public class OperacionesController {
         return new Tabla(listaOperaciones.stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList()), new String[]{"Numero de certidicado de garantia", "Tipo de operacion"});
     }
 
-
+    public float getComisionesCalculadas(Date date) {
+        return this.listaOperaciones.stream()
+                .filter(op -> op.getTipoOperacion() == 3 &&
+                    op.getFecha() == date &&
+                    ((Cheque)op).getBanco().trim().equals("Mercado Argentino de Valores"))
+                .map(op -> op.getMonto()) //TODO: Remplazar por getComision
+                .reduce(0f, (acum, comision) -> acum + comision);
+    }
 
 }

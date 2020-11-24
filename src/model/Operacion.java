@@ -53,7 +53,7 @@ public abstract class Operacion {
         return estado;
     }
 
-    abstract Date getFecha();
+    public abstract Date getFecha();
 
     public int getNumeroCertificadoGarantia(){ return numeroCertificadoGarantia;}
 

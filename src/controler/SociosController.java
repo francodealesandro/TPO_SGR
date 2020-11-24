@@ -7,6 +7,7 @@ import utils.Lista;
 import utils.ListaDAO;
 import utils.Tabla;
 
+import javax.swing.table.TableModel;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
