@@ -31,7 +31,7 @@ public class Cheque extends Operacion {
     }
 
     @Override
-    float getMontoComision() {
+    public float getMontoComision() {
         return 3;
     }
 

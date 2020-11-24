@@ -81,7 +81,7 @@ public abstract class Operacion {
         return respuesta;
     }
 
-    abstract float getMontoComision();
+    public abstract float getMontoComision();
 
     public void addComision(){
 

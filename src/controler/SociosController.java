@@ -80,4 +80,12 @@ public class SociosController {
         float promedio = (float)total / lista.size();
         return new float[]{promedio, total};
     }
+
+    public float getComisiones(Socio socio, int tipoOperacion) {
+        return socio.getLineaDeCredito() == null ? 0 :
+                socio.getLineaDeCredito().getOperaciones().stream()
+                .filter(op -> op.getTipoOperacion() == tipoOperacion)
+                .map(op -> op.getMontoComision())
+                .reduce(0f, (acum, comision) -> acum + comision);
+    }
 }
