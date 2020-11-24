@@ -1,8 +1,6 @@
 package controler;
 
-import model.EstadoSocio;
-import model.LineaDeCredito;
-import model.Socio;
+import model.*;
 import utils.Lista;
 import utils.ListaDAO;
 import utils.Tabla;
@@ -71,4 +69,15 @@ public class SociosController {
 
     }
 
+    public float[] PromedioTasaDescuento(Date desde, Date hasta, TipoEmpresa tipoEmpresa) {
+        List<Float> lista = listaSocios.stream().filter(socio -> socio.getTipoEmpresa() == tipoEmpresa && socio.getLineaDeCredito() != null)
+            .map(socio -> socio.getLineaDeCredito().getOperaciones())
+            .flatMap(List::stream).collect(Collectors.toList())
+            .stream().filter(op -> op.getFecha().after(desde) && op.getFecha().before(hasta))
+            .map(op -> op.getMonto())
+            .collect(Collectors.toList());
+        float total = lista.stream().reduce(0f, (acum, op) -> acum + op);
+        float promedio = (float)total / lista.size();
+        return new float[]{promedio, total};
+    }
 }

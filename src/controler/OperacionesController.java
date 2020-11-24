@@ -127,4 +127,5 @@ public class OperacionesController {
                 .filter(op -> op.getFecha().after(desde) && op.getFecha().before(hasta)).collect(Collectors.toList()),
                 new String[]{"NumeroCertificadoGarantia", "TipoOperacionString", "Estado", "Monto"});
     }
+
 }
