@@ -18,7 +18,7 @@ public class CuentaCorriente extends Operacion {
     }
 
     @Override
-    Date getFecha() {
+    public Date getFecha() {
         return fechaVencimiento;
     }
 

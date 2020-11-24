@@ -22,7 +22,7 @@ public class FrmConsultasGenerales extends JDialog{
         super(owner, titulo);
 
         this.setContentPane(pnlPrincipal);
-        this.setSize(600, 600);
+        this.setSize(728, 224);
 
         //No permite volver a la pantalla anterior HASTA cerrar esta
         this.setModal(true);

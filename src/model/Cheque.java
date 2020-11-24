@@ -8,6 +8,7 @@ public class Cheque extends Operacion {
     private Date fechaVencimiento;
     private String cuitFirmante;
     private int tasaDeDescuento;
+
     private String banco;
 
     public Cheque(LineaDeCredito linea,int tipoOperacion, float monto, Date fecha, int numero,
@@ -25,7 +26,7 @@ public class Cheque extends Operacion {
     }
 
     @Override
-    Date getFecha() {
+    public Date getFecha() {
         return fechaVencimiento;
     }
 
@@ -40,6 +41,10 @@ public class Cheque extends Operacion {
 
     public boolean estaVencido() {
         return false;
+    }
+
+    public String getBanco() {
+        return banco;
     }
 
 }
