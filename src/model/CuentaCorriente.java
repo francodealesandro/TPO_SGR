@@ -21,4 +21,9 @@ public class CuentaCorriente extends Operacion {
     public Date getFecha() {
         return fechaVencimiento;
     }
+
+    @Override
+    float getMontoComision() {
+        return 3;
+    }
 }

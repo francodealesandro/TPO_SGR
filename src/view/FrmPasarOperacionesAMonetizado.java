@@ -3,9 +3,16 @@ package view;
 import controler.LineaDeCreditoController;
 import controler.OperacionesController;
 import controler.SociosController;
+import model.LineaDeCredito;
+import model.Operacion;
+import model.Socio;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmPasarOperacionesAMonetizado extends JDialog {
     private JPanel pnlPrincipal;
@@ -14,6 +21,8 @@ public class FrmPasarOperacionesAMonetizado extends JDialog {
 
     private OperacionesController controller;
 
+    private int numeroCertificadoSelected;
+
 
     private FrmPasarOperacionesAMonetizado self;
 
@@ -21,9 +30,7 @@ public class FrmPasarOperacionesAMonetizado extends JDialog {
     {
         super(owner, titulo);
         controller = OperacionesController.getInstance();
-        /*controllerS = SociosController.getInstance();
-        controllerLDC = LineaDeCreditoController.getInstance();
-*/
+
         this.setContentPane(pnlPrincipal);
         this.setSize(600, 600);
 
@@ -41,7 +48,18 @@ public class FrmPasarOperacionesAMonetizado extends JDialog {
     }
     private void asociarEventos()
     {
+        btnMonetizar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.setOperacionAMonetizado(numeroCertificadoSelected);
 
-
+            }
+        });
+        tableOperaciones.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                numeroCertificadoSelected = Integer.parseInt(tableOperaciones.getValueAt(tableOperaciones.getSelectedRow(), 0).toString());
+            }
+        });
     }
 }

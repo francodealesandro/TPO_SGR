@@ -96,7 +96,7 @@ public class OperacionesController {
     }
 
     public Tabla<Operacion> getOperacionesTableModel() {
-        return new Tabla(listaOperaciones.stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList()), new String[]{"Numero de certidicado de garantia", "Tipo de operacion"});
+        return new Tabla(listaOperaciones.stream().filter(x -> x.getEstado().equals("Con certificado emitido")).collect(Collectors.toList()), new String[]{"NumeroCertificadoGarantia", "TipoOperacionString"});
     }
 
     public float getComisionesCalculadas(Date date) {
@@ -108,4 +108,15 @@ public class OperacionesController {
                 .reduce(0f, (acum, comision) -> acum + comision);
     }
 
+    public void setOperacionAMonetizado(int numeroCertificadoGarantia) {
+        listaOperaciones.stream().filter(x -> x.getNumeroCertificadoGarantia() == numeroCertificadoGarantia)
+                .forEach(x ->{
+                            x.cambiarEstado("Monetizado");
+                            x.addComision();
+                });
+
+
+
+        controllerLDC.guardarDatos();
+    }
 }
