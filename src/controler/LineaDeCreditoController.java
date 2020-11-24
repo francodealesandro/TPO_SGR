@@ -64,7 +64,6 @@ public class LineaDeCreditoController {
         for(LineaDeCredito linea: lista){
             listaReturn.add(sociosController.getsocioById(linea.getIdSocio()));
         }
-        int h = 1;
         return listaReturn;
     }
 
