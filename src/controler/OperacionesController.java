@@ -6,6 +6,7 @@ import utils.ListaDAO;
 import utils.Tabla;
 
 import javax.sound.sampled.Line;
+import javax.swing.table.TableModel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,10 +102,11 @@ public class OperacionesController {
 
     public float getComisionesCalculadas(Date date) {
         return this.listaOperaciones.stream()
-                .filter(op -> op.getTipoOperacion() == 3 &&
-                    op.getFecha() == date &&
+                .filter(op -> op.getTipoOperacion() == 1 &&
+                    op.getFecha().equals(date) &&
+                    op.getComision() != null &&
                     ((Cheque)op).getBanco().trim().equals("Mercado Argentino de Valores"))
-                .map(op -> op.getMonto()) //TODO: Remplazar por getComision
+                .map(op -> op.getComision().getCantidad())
                 .reduce(0f, (acum, comision) -> acum + comision);
     }
 
@@ -118,5 +120,11 @@ public class OperacionesController {
 
 
         controllerLDC.guardarDatos();
+    }
+
+    public TableModel getOperaciones(Socio socio, Date desde, Date hasta) {
+        return new Tabla<>(socio.getLineaDeCredito().getOperaciones().stream()
+                .filter(op -> op.getFecha().after(desde) && op.getFecha().before(hasta)).collect(Collectors.toList()),
+                new String[]{"NumeroCertificadoGarantia", "TipoOperacionString", "Estado", "Monto"});
     }
 }

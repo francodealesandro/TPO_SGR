@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.FrmTotalComisiones">
   <grid id="27dc6" binding="pnlPrincipal" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="571" height="165"/>
+      <xy x="20" y="20" width="571" height="102"/>
     </constraints>
     <properties/>
     <border type="none"/>

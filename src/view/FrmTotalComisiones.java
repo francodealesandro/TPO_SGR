@@ -28,8 +28,7 @@ public class FrmTotalComisiones extends JDialog{
         controller = OperacionesController.getInstance();
 
         this.setContentPane(pnlPrincipal);
-        this.setSize(600, 600);
-
+        this.setSize(498, 150);
         //No permite volver a la pantalla anterior HASTA cerrar esta
         this.setModal(true);
         //Establezco el comportamiento a la hora de cerrarse
@@ -44,9 +43,9 @@ public class FrmTotalComisiones extends JDialog{
         calcularButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int a = Integer.parseInt(cbDia.getSelectedItem().toString());
+                int d = Integer.parseInt(cbDia.getSelectedItem().toString());
                 int m = Integer.parseInt(cbMes.getSelectedItem().toString());
-                int d = Integer.parseInt(cbAnio.getSelectedItem().toString());
+                int a = Integer.parseInt(cbAnio.getSelectedItem().toString());
                 txtResultado.setText(String.valueOf(controller.getComisionesCalculadas(getDate(a, m, d))));
             }
         });

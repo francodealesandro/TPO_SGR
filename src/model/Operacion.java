@@ -92,4 +92,9 @@ public abstract class Operacion {
         this.comision = c;
 
     }
+
+    public Comision getComision() {
+        return comision;
+    }
+
 }

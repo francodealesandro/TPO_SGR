@@ -3,6 +3,7 @@ package model;
 public class Comision {
 
     private String estado;
+
     private float cantidad;
     private int idOperacion;
 
@@ -10,6 +11,10 @@ public class Comision {
         this.idOperacion = idOp;
         this.cantidad = monto;
         this.estado = "Calculada";
+    }
+
+    public float getCantidad() {
+        return cantidad;
     }
 
 }
