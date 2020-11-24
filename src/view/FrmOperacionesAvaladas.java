@@ -42,7 +42,7 @@ public class FrmOperacionesAvaladas extends JDialog {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
         this.setLocationRelativeTo(null);
-        cbNombreSocios.setModel(new DefaultComboBoxModel(controllerS.getSocios().stream().toArray()));
+        cbNombreSocios.setModel(new DefaultComboBoxModel(controllerS.getSociosParticipes().get().stream().toArray()));
         this.asociarEventos();
         this.self = this;
     }

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Prestamo extends Operacion {
@@ -29,5 +30,30 @@ public class Prestamo extends Operacion {
     @Override
     public float getMontoComision() {
         return 4;
+    }
+
+    public int getCantidadCuotas(){
+        return this.cantidadCuotas;
+    }
+
+    public int getCantidadCuotasImpagas(){
+        Date actual = new Date();
+
+        Calendar fechaAcredita = Calendar.getInstance();
+        Calendar fechaFinalPagos = Calendar.getInstance();
+        fechaAcredita.setTime(this.fechaAcreditacion);
+        fechaFinalPagos.setTime(this.fechaAcreditacion);
+        fechaFinalPagos.add(Calendar.MONTH,this.cantidadCuotas);
+
+        if(fechaFinalPagos.getTime().before(actual)){
+            return 0;
+        }else{
+            int coutasImpagas = 0;
+            while(fechaAcredita.before(actual)){
+                coutasImpagas += 1;
+                fechaAcredita.add(Calendar.MONTH, 1);
+            }
+            return coutasImpagas;
+        }
     }
 }
