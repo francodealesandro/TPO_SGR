@@ -77,7 +77,7 @@ public class FrmOperacionesTipo1 extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Float.parseFloat(txtMonto.getText()) > controllerS.getLimiteFondoRiesgo())
+                if (Float.parseFloat(txtMonto.getText()) > (controllerS.getLimiteFondoRiesgo() - controller.getMontosCheques(txtCuit.getText())))
                     JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
                 else {
                     int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());

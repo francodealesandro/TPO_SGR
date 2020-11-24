@@ -11,7 +11,7 @@ public class Cheque extends Operacion {
 
     private String banco;
 
-    public Cheque(LineaDeCredito linea,int tipoOperacion, float monto, Date fecha, int numero,
+    public Cheque(LineaDeCredito linea, int tipoOperacion, float monto, Date fecha, int numero,
                   Date fechaVencimiento, String cuitFirmante, String banco, int tasa)
     {
         super(linea, tipoOperacion,monto,fecha);
@@ -45,6 +45,10 @@ public class Cheque extends Operacion {
 
     public String getBanco() {
         return banco;
+    }
+
+    public String getCuitFirmante() {
+        return cuitFirmante;
     }
 
 }

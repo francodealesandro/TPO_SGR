@@ -122,4 +122,11 @@ public class OperacionesController {
         listaOperaciones.stream().filter(x -> x.getEstadoComision() == "Calculada").forEach(x -> x.cambiarEstadoComision("Facturada"));
         controllerLDC.guardarDatos();
     }
+
+    public float getMontosCheques(String cuitFirmante) {
+        return this.listaOperaciones.stream().filter(op -> op.getTipoOperacion() == 1 &&
+                ((Cheque)op).getCuitFirmante().toLowerCase().trim().equals(cuitFirmante.toLowerCase().trim()))
+                .map(Operacion::getMonto)
+                .reduce(0f, (acum, monto) -> acum + monto);
+    }
 }
