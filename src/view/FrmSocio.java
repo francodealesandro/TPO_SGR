@@ -64,19 +64,23 @@ public class FrmSocio extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    socio = new Socio(radioParticipe.isSelected(),
-                            txtCuit.getText(),
-                            txtRazonSocial.getText(),
-                            new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaInicio.getText()),
-                            comboTipo.getSelectedItem().equals("Pequeño") ? TipoEmpresa.PEQUEÑA : comboTipo.getSelectedItem().equals("Mediana") ? TipoEmpresa.MEDIANA : TipoEmpresa.GRANDE,
-                            txtActPrincipal.getText(),
-                            txtDireccion.getText(),
-                            Integer.parseInt(txtTelefono.getText()),
-                            txtCorreo.getText());
-                    dispose();
-                } catch (ParseException parseException) {
-                    parseException.printStackTrace();
+                if (radioProtector.isSelected() && controller.BuscarAccionista(txtCuit.getText()))
+                    JOptionPane.showMessageDialog(null, "Socio se encuentra cargado como accionista de un socio participe");
+                else {
+                    try {
+                        socio = new Socio(radioParticipe.isSelected(),
+                                txtCuit.getText(),
+                                txtRazonSocial.getText(),
+                                new SimpleDateFormat("dd-MM-yyyy").parse(txtFechaInicio.getText()),
+                                comboTipo.getSelectedItem().equals("Pequeño") ? TipoEmpresa.PEQUEÑA : comboTipo.getSelectedItem().equals("Mediana") ? TipoEmpresa.MEDIANA : TipoEmpresa.GRANDE,
+                                txtActPrincipal.getText(),
+                                txtDireccion.getText(),
+                                Integer.parseInt(txtTelefono.getText()),
+                                txtCorreo.getText());
+                        dispose();
+                    } catch (ParseException parseException) {
+                        parseException.printStackTrace();
+                    }
                 }
             }
         });

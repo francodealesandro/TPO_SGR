@@ -84,4 +84,10 @@ public class SociosController {
                 .stream().map(aporte -> aporte.getMonto())
                 .reduce(0f, (acum, monto) -> acum + monto) * 0.05f;
     }
+
+    public boolean BuscarAccionista(String cuitNewProtector) {
+        return listaSocios.stream().anyMatch(socio -> socio.esParticipe() &&
+                socio.getAccionistas().stream()
+                        .anyMatch(accionista -> accionista.getCuit().toLowerCase().trim().equals(cuitNewProtector.toLowerCase().trim())));
+    }
 }
