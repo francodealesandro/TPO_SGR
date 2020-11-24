@@ -1,16 +1,15 @@
 package utils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import model.Operacion;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class ListaDAO<T> extends ArrayList<T> {
     final Class<T> clase;
-    protected File archivo;
+    final File archivo;
+    final Gson g;
 
     public ListaDAO(Class<T> clase) throws Exception {
         super();
@@ -18,6 +17,11 @@ public class ListaDAO<T> extends ArrayList<T> {
 
         this.archivo = new File("datos/" + clase.getSimpleName());
         this.archivo.createNewFile();
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.registerTypeAdapter(Operacion.class, new InterfaceAdapter<Operacion>());
+        g = gsonBilder.create();
+
         load();
     }
 
@@ -35,7 +39,6 @@ public class ListaDAO<T> extends ArrayList<T> {
 
             JsonParser parser = new JsonParser();
             JsonArray gsonArr = parser.parse(cadena).getAsJsonArray();
-            Gson g = new Gson();
             for (JsonElement js : gsonArr) {
                 this.add(g.fromJson(js, clase));
             }
@@ -46,7 +49,6 @@ public class ListaDAO<T> extends ArrayList<T> {
     }
 
     public void save() throws Exception {
-        Gson g = new Gson();
         String texto = g.toJson(this);
         FileWriter fileWriter = new FileWriter(archivo);
         fileWriter.write(texto);
