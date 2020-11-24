@@ -78,6 +78,8 @@ public class FrmOperacionesTipo2 extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 if (Float.parseFloat(txtImporte.getText()) > controllerS.getLimiteFondoRiesgo())
                     JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
+                else if (((Socio)comboSocios.getSelectedItem()).superaLineaCreditoPorNoFacturadas())
+                    JOptionPane.showMessageDialog(null, "Socio no puede operar con mas del 10% de la linea sin facturar");
                 else {
                     int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());
                     int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());

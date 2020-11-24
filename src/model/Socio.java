@@ -162,4 +162,12 @@ public class Socio {
     public int getID() {
         return this.idSocio;
     }
+
+    public boolean superaLineaCreditoPorNoFacturadas() {
+        return lineaDeCredito == null ? true : lineaDeCredito.getOperaciones().stream()
+                .map(operacion -> operacion.getComision())
+                .filter(comision -> comision == null && !comision.getEstado().equals("Facturada"))
+                .map(comision -> comision.getCantidad())
+                .reduce(0f, (acum, comision) -> acum + comision) * 0.1f > lineaDeCredito.getMonto();
+    }
 }

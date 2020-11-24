@@ -6,13 +6,9 @@ import controler.SociosController;
 import model.*;
 
 import javax.swing.*;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -79,6 +75,8 @@ public class FrmOperacionesTipo1 extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 if (Float.parseFloat(txtMonto.getText()) > (controllerS.getLimiteFondoRiesgo() - controller.getMontosCheques(txtCuit.getText())))
                     JOptionPane.showMessageDialog(null, "El monto supera el 5% del fondo de riesgo");
+                else if (((Socio)comboSocios.getSelectedItem()).superaLineaCreditoPorNoFacturadas())
+                    JOptionPane.showMessageDialog(null, "Socio no puede operar con mas del 10% de la linea sin facturar");
                 else {
                     int a = Integer.parseInt(fechaVencimientoA.getSelectedItem().toString());
                     int m = Integer.parseInt(fechaVencimientoM.getSelectedItem().toString());
