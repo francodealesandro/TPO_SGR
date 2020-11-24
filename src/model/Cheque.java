@@ -29,6 +29,11 @@ public class Cheque extends Operacion {
         return fechaVencimiento;
     }
 
+    @Override
+    float getMontoComision() {
+        return 3;
+    }
+
     public void calcularTasaDescuento() {
 
     }

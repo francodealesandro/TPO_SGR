@@ -25,4 +25,9 @@ public class Prestamo extends Operacion {
     public Date getFecha() {
         return fechaAcreditacion;
     }
+
+    @Override
+    float getMontoComision() {
+        return 4;
+    }
 }
